@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Adventures and Intersts</title>
+    <title>Coding Adventures and Interests</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,6 +23,23 @@
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .nav {
+            text-align: center;
+            padding: 10px;
+            background-color: #4a90e2;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        .nav a:hover {
+            background-color: #357ABD;
+            border-radius: 5px;
         }
         section {
             margin-bottom: 40px;
@@ -49,6 +66,13 @@
 <body>
 
     <div class="container">
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="research.html">Research</a>
+            <a href="CV.pdf" target="_blank">Download my CV</a>
+            <a href="Contact.html">Contact</a>
+        </div>
+
         <h1>Coding Adventures and Interests</h1>
 
         <section>
@@ -73,6 +97,11 @@
             </section>
         </section>
 
+        <section id="research">
+            <h2>Research</h2>
+            <p>Details about my ongoing research projects related to plant epidemiology, GIS, and data modeling.</p>
+        </section>
+
         <section>
             <h2>The Music I Play</h2>
             <p>I play a Persian instrument called Santur. Santur is a hammered dulcimer of Iranian origin, which is traditionally made of walnut or other fine woods. The Persian Santur has 72 strings and is played with two light wooden mallets known as "Mezrab." It produces a rich, resonant sound that is central to Persian classical music.</p>
@@ -90,7 +119,13 @@
                 </a>
             </div>
         </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>If you would like to get in touch, feel free to <a href="mailto:your.email@example.com">email me</a>.</p>
+        </section>
     </div>
 
 </body>
 </html>
+
