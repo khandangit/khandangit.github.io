@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Curated Job List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    input[type="text"], input[type="url"] {
+      width: calc(100% - 20px);
+      padding: 8px;
+      margin: 5px 0;
+    }
+    button {
+      padding: 8px 12px;
+      margin-top: 10px;
+    }
+    li {
+      margin: 10px 0;
+    }
+    a {
+      text-decoration: none;
+      color: blue;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h2>📝 My Curated Job List</h2>
+  <input type="text" id="jobTitle" placeholder="Job Title">
+  <input type="url" id="jobLink" placeholder="Job Link (https://...)">
+  <button onclick="addJob()">Add Job</button>
+  <hr>
+  <ul id="jobList"></ul>
+
+  <script>
+    const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
+
+    function renderList() {
+      const listEl = document.getElementById("jobList");
+      listEl.innerHTML = "";
+      jobList.forEach((job, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <a href="${job.link}" target="_blank">${job.title}</a>
+          <button onclick="removeJob(${index})">❌</button>
+        `;
+        listEl.appendChild(li);
+      });
+    }
+
+    function addJob() {
+      const title = document.getElementById("jobTitle").value.trim();
+      const link = document.getElementById("jobLink").value.trim();
+      if (!title || !link) {
+        alert("Please enter both title and valid link.");
+        return;
+      }
+      jobList.push({ title, link });
+      localStorage.setItem("jobList", JSON.stringify(jobList));
+      document.getElementById("jobTitle").value = '';
+      document.getElementById("jobLink").value = '';
+      renderList();
+    }
+
+    function removeJob(index) {
+      if (confirm("Remove this job?")) {
+        jobList.splice(index, 1);
+        localStorage.setItem("jobList", JSON.stringify(jobList));
+        renderList();
+      }
+    }
+
+    renderList();
+  </script>
+</body>
+</html>
