@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hossein Narouei-Khandan | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .content-box {
+            min-height: 400px; /* Uniform height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        .header-parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="sticky-nav bg-green-800 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold">Hossein Narouei-Khandan</div>
+            <div class="space-x-4">
+                <a href="#home" class="hover:text-green-300 transition duration-300">Home</a>
+                <a href="#research" class="hover:text-green-300 transition duration-300">Research</a>
+                <a href="CV.pdf" target="_blank" class="hover:text-green-300 transition duration-300">CV</a>
+                <a href="#interests" class="hover:text-green-300 transition duration-300">Hobbies</a>
+                <a href="#contact" class="hover:text-green-300 transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="header-parallax bg-[url('header-image.jpg')] bg-cover bg-center h-96 flex items-center justify-center text-white text-center relative">
+        <div class="bg-black bg-opacity-50 p-8 rounded-xl fade-in-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">Hossein Narouei-Khandan</h1>
+            <p class="text-xl md:text-2xl">Plant Pathology | GIS | Biosecurity Specialist</p>
+            <a href="#contact" class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition duration-300">Get in Touch</a>
+        </div>
+    </header>
+
+    <!-- Content Sections -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <!-- Featured Project -->
+        <section class="mb-16 fade-in-up">
+            <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">Featured Project</h2>
+            <div class="bg-white rounded-xl shadow-lg p-6 hover-scale">
+                <h3 class="text-xl font-semibold text-white bg-green-600 rounded-full py-2 px-4 text-center mx-auto w-3/4">ISPM Knowledge Hub</h3>
+                <p class="text-gray-700 mt-4 text-center">An advanced RAG-powered platform revolutionizing plant health research with interactive knowledge exploration and cutting-edge insights into epidemiology.</p>
+                <a href="https://hankapps.shinyapps.io/ISPM_Knowledge_Hub/" target="_blank" class="mt-4 inline-block text-blue-600 hover:underline">Explore Now</a>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div id="professional-background" class="content-box bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover-scale">
+                <h3 class="text-lg font-semibold text-white bg-green-600 rounded-full py-2 px-4 text-center mx-auto w-3/4">Professional Background</h3>
+                <p class="text-gray-700 text-sm mt-4 text-justify">My journey began with a B.Sc. in Plant Pathology from Zabol, followed by an M.Sc. in GIS-based plant disease mapping in Iran. I earned my Ph.D. in Plant Pathology Modeling at Lincoln University, New Zealand, under Susan Worner’s mentorship. My postdoctoral work at the University of Florida with Professor Ariena van Bruggen and Karen Garrett advanced my expertise in innovative research.</p>
+            </div>
+            <div id="research" class="content-box bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover-scale">
+                <h3 class="text-lg font-semibold text-white bg-green-600 rounded-full py-2 px-4 text-center mx-auto w-3/4">
+                    <a href="research.html" class="text-white no-underline block">Research</a>
+                </h3>
+                <p class="text-gray-700 text-sm mt-4 text-justify">I integrate quantitative modeling, GIS, and bioinformatics to tackle challenges in plant pathology and environmental science, focusing on disease distribution, biosecurity, and climate change impacts. My work leverages advanced statistical methods and machine learning for predictive analytics and sustainable agriculture.</p>
+            </div>
+            <div id="affiliation" class="content-box bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover-scale">
+                <h3 class="text-lg font-semibold text-white bg-green-600 rounded-full py-2 px-4 text-center mx-auto w-3/4">Affiliation</h3>
+                <p class="text-gray-700 text-sm mt-4 text-justify">As a Specialist Adviser at New Zealand’s Ministry for Primary Industries, I lead biosecurity and spatial intelligence projects, applying GIS, data modeling, and plant pathology to safeguard agricultural and environmental health.</p>
+            </div>
+        </div>
+
+        <!-- Interests & Hobbies Section -->
+        <section id="interests" class="mb-16 fade-in-up">
+            <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">Interests & Hobbies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="content-box bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover-scale">
+                    <h3 class="text-lg font-semibold text-white bg-green-600 rounded-full py-2 px-4 text-center mx-auto w-3/4">
+                        <a href="hobbies_interests.html" class="text-white no-underline block">Coding Adventures</a>
+                    </h3>
+                    <p class="text-gray-700 text-sm mt-4 text-justify">In my spare time, I create innovative tools like Shiny apps, Python applications, and web dashboards. Notable projects include the <a href="https://hankapps.shinyapps.io/ISPM_Knowledge_Hub/" target="_blank" class="text-blue-600 hover:underline">ISPM Knowledge Hub</a>, a RAG-powered platform for plant health insights, and an interactive <a href="https://khandangit.github.io/wellyfishing/" target="_blank" class="text-blue-600 hover:underline">Fishing Spots Around Wellington</a> webpage.</p>
+                    <a href="hobbies_interests.html" class="mt-4 inline-block text-blue-600 hover:underline">View All Projects</a>
+                </div>
+                <div class="content-box bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover-scale">
+                    <h3 class="text-lg font-semibold text-white bg-green-600 rounded-full py-2 px-4 text-center mx-auto w-3/4">Persian Santur Music</h3>
+                    <p class="text-gray-700 text-sm mt-4 text-justify">I play the Persian Santur, a 72-string hammered dulcimer that produces a rich, resonant sound central to Persian classical music. Explore my performances on YouTube:</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                        <a href="https://youtu.be/vS4JNb_6e3U?si=FWl7BhnNfu8j3HJ8" target="_blank" class="hover-scale">
+                            <img src="https://img.youtube.com/vi/vS4JNb_6e3U/0.jpg" alt="Santur YouTube Video 1" class="w-full rounded-lg shadow-md">
+                        </a>
+                        <a href="https://youtu.be/F3O0GBNDZtY?si=XvwcskEwheNK229v" target="_blank" class="hover-scale">
+                            <img src="https://img.youtube.com/vi/F3O0GBNDZtY/0.jpg" alt="Santur YouTube Video 2" class="w-full rounded-lg shadow-md">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-green-50 py-12 text-center">
+        <h2 class="text-3xl font-semibold text-green-700 mb-6">Get in Touch</h2>
+        <p class="text-gray-700 mb-4">Interested in collaboration or have questions? Reach out!</p>
+        <a href="Contact.html" class="inline-block bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition duration-300">Contact Me</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-800 text-white text-center py-6">
+        <p>© 2025 Hossein Narouei-Khandan | <a href="jobs.html" class="text-green-300 hover:underline">My Job List</a> | <a href="hobbies_interests.html" class="text-green-300 hover:underline">Hobbies & Apps</a></p>
+    </footer>
+</body>
+</html>
