@@ -3,130 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Adventures and Interests (click to see more</title>
+    <title>Coding Adventures and Interests</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f4f8;
-            color: #333;
-            margin: 0;
-            padding: 20px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        h1 {
-            text-align: center;
-            color: #4a90e2;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .hover-scale {
+            transition: transform 0.3s ease;
         }
-        .nav {
-            text-align: center;
-            padding: 10px;
-            background-color: #4a90e2;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            display: inline-block;
-        }
-        .nav a:hover {
-            background-color: #357ABD;
-            border-radius: 5px;
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        section h2 {
-            font-size: 1.5em;
-            color: #4a90e2;
-            border-bottom: 2px solid #4a90e2;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        h3 {
-            margin-top: 20px;
-        }
-        a {
-            color: #4a90e2;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+        .hover-scale:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-blue-50 to-gray-100 min-h-screen flex items-center justify-center py-12 px-4">
+    <div class="container max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 fade-in">
+        <nav class="flex justify-center space-x-4 mb-8 bg-blue-600 rounded-lg p-4">
+            <a href="index.html" class="text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Home</a>
+            <a href="research.html" class="text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Research</a>
+            <a href="CV.pdf" target="_blank" class="text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Download CV</a>
+            <a href="Contact.html" class="text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Contact</a>
+        </nav>
 
-    <div class="container">
-        <div class="nav">
-            <a href="index.html">Home</a>
-            <a href="research.html">Research</a>
-            <a href="CV.pdf" target="_blank">Download my CV</a>
-            <a href="Contact.html">Contact</a>
-        </div>
+        <h1 class="text-4xl font-bold text-center text-blue-700 mb-10">Coding Adventures and Interests</h1>
 
-        <h1>Coding Adventures and Interests</h1>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-blue-600 border-b-2 border-blue-300 pb-2 mb-6">Apps</h2>
+            <p class="text-gray-700 mb-6">In my free time, I craft innovative tools ranging from Shiny apps and Python applications to PowerBI dashboards, GIS visualizations, and dynamic web applications.</p>
 
-        <section>
-            <h2>Apps</h2>
-            <p>In my free time, I enjoy creating Shiny apps, Python Apps, PowerBI dashboards, GIS dashboards, and web applications.</p>
-            
-            <section>
-                <h3>My Shiny Apps</h3>
-                <ul>
-                    <li style="margin-bottom: 14px;"><a href="https://myanalysers.shinyapps.io/ANZ_Expense_Analyser/" target="_blank">ANZ Expense Analyzer</a>: A tool for analyzing expenses.</li>
-                    <li style="margin-bottom: 14px;"><a href="https://myanalysers.shinyapps.io/Sampling/" target="_blank">ISPM31 Sampling Tool</a>: A sampling tool following the ISPM31 standard.</li>
+            <div class="mb-8">
+                <h3 class="text-xl font-medium text-blue-500 mb-4">My Shiny Apps</h3>
+                <ul class="space-y-4">
+                    <li class="hover-scale"><a href="https://myanalysers.shinyapps.io/ANZ_Expense_Analyser/" target="_blank" class="text-blue-600 hover:underline">ANZ Expense Analyzer</a>: A powerful tool to streamline and analyze your expenses with ease.</li>
+                    <li class="hover-scale"><a href="https://myanalysers.shinyapps.io/Sampling/" target="_blank" class="text-blue-600 hover:underline">ISPM31 Sampling Tool</a>: A specialized tool adhering to the ISPM31 standard for efficient sampling.</li>
+                    <li class="hover-scale"><a href="https://hankapps.shinyapps.io/ISPM_Knowledge_Hub/" target="_blank" class="text-blue-600 hover:underline">ISPM Knowledge Hub</a>: An advanced RAG-powered platform delivering cutting-edge insights and interactive knowledge exploration for plant health and epidemiology enthusiasts.</li>
                 </ul>
-            </section>
+            </div>
 
-            <section>
-                <h3>My Python and HTML Apps</h3>
-                <ul>
-                    <li style="margin-bottom: 14px;"><a href="https://epiplant.up.railway.app/" target="_blank">Plant Disease Epidemiology</a>: A user-friendly tool that calculates basic epidemiology concepts.</li>
-                    <li style="margin-bottom: 14px;"><a href="https://khandangit.github.io/wellyfishing/" target="_blank">Fishing Spots Around Wellington</a>: An interactive Web Page that includes community-sourced fishing spots around Wellington. It has also tide info, and maps of annual distribution of fish species such as Snapper, Kingfish, Kahawai and Red Cod.</li>
-                    <li style="margin-bottom: 14px;"><a href="https://www.nzdirr.info/" target="_blank">NZD to IRR real-time calculator</a>: Web scraping tool for calculating NZD to IRR in real-time.</li>
-                    <li style="margin-bottom: 14px;"><a href="https://t.me/nztrade_review_bot/" target="_blank">Trade Review Telegram Bot</a>: An interactive Telegram Bot for users to leave trade reviews.</li>
-                </ul>
-            </section>
-        </section>
-
-        <section id="research">
-            <h2>Research</h2>
-            <p>Details about my ongoing research projects related to plant epidemiology, GIS, and data modeling.</p>
-        </section>
-
-        <section>
-            <h2>The Music I Play</h2>
-            <p>I play a Persian instrument called Santur. Santur is a hammered dulcimer of Iranian origin, which is traditionally made of walnut or other fine woods. The Persian Santur has 72 strings and is played with two light wooden mallets known as "Mezrab." It produces a rich, resonant sound that is central to Persian classical music.</p>
-
-            <h3>My YouTube Videos</h3>
             <div>
-                <a href="https://youtu.be/vS4JNb_6e3U?si=FWl7BhnNfu8j3HJ8" target="_blank">
-                    <img src="https://img.youtube.com/vi/vS4JNb_6e3U/0.jpg" alt="Santur YouTube Video 1" style="width:100%; max-width: 300px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-right: 10px;">
+                <h3 class="text-xl font-medium text-blue-500 mb-4">My Python and HTML Apps</h3>
+                <ul class="space-y-4">
+                    <li class="hover-scale"><a href="https://epiplant.up.railway.app/" target="_blank" class="text-blue-600 hover:underline">Plant Disease Epidemiology</a>: A user-friendly tool for calculating core epidemiology concepts with precision.</li>
+                    <li class="hover-scale"><a href="https://khandangit.github.io/wellyfishing/" target="_blank" class="text-blue-600 hover:underline">Fishing Spots Around Wellington</a>: An interactive webpage featuring community-sourced fishing spots, tide information, and maps of fish species distribution like Snapper, Kingfish, Kahawai, and Red Cod.</li>
+                    <li class="hover-scale"><a href="https://www.nzdirr.info/" target="_blank" class="text-blue-600 hover:underline">NZD to IRR Real-Time Calculator</a>: A web-scraping tool for real-time NZD to IRR currency conversion.</li>
+                    <li class="hover-scale"><a href="https://t.me/nztrade_review_bot/" target="_blank" class="text-blue-600 hover:underline">Trade Review Telegram Bot</a>: An interactive bot for users to submit and explore trade reviews seamlessly.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-12" id="research">
+            <h2 class="text-2xl font-semibold text-blue-600 border-b-2 border-blue-300 pb-2 mb-6">Research</h2>
+            <p class="text-gray-700">Explore my ongoing research in plant epidemiology, GIS, and data modeling, driving advancements in sustainable agriculture.</p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-blue-600 border-b-2 border-blue-300 pb-2 mb-6">The Music I Play</h2>
+            <p class="text-gray-700 mb-6">I play the Persian Santur, a mesmerizing hammered dulcimer with 72 strings, crafted from fine woods like walnut. Played with delicate Mezrab mallets, it produces a rich, resonant sound central to Persian classical music.</p>
+
+            <h3 class="text-xl font-medium text-blue-500 mb-4">My YouTube Videos</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <a href="https://youtu.be/vS4JNb_6e3U?si=FWl7BhnNfu8j3HJ8" target="_blank" class="hover-scale">
+                    <img src="https://img.youtube.com/vi/vS4JNb_6e3U/0.jpg" alt="Santur YouTube Video 1" class="w-full rounded-lg shadow-md">
                 </a>
-                <a href="https://youtu.be/F3O0GBNDZtY?si=XvwcskEwheNK229v" target="_blank">
-                    <img src="https://img.youtube.com/vi/F3O0GBNDZtY/0.jpg" alt="Santur YouTube Video 2" style="width:100%; max-width: 300px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <a href="https://youtu.be/F3O0GBNDZtY?si=XvwcskEwheNK229v" target="_blank" class="hover-scale">
+                    <img src="https://img.youtube.com/vi/F3O0GBNDZtY/0.jpg" alt="Santur YouTube Video 2" class="w-full rounded-lg shadow-md">
                 </a>
-                <a href="https://youtu.be/78djmQZC48U?si=9DRP6YQ2bg_TaDaC" target="_blank">
-                    <img src="https://img.youtube.com/vi/78djmQZC48U/0.jpg" alt="Santur YouTube Video 3" style="width:100%; max-width: 300px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-top: 10px;">
+                <a href="https://youtu.be/78djmQZC48U?si=9DRP6YQ2bg_TaDaC" target="_blank" class="hover-scale">
+                    <img src="https://img.youtube.com/vi/78djmQZC48U/0.jpg" alt="Santur YouTube Video 3" class="w-full rounded-lg shadow-md">
                 </a>
             </div>
         </section>
 
         <section id="contact">
-            <h2>Contact</h2>
-            <p>If you would like to get in touch, feel free to <a href="mailto:your.email@example.com">email me</a>.</p>
+            <h2 class="text-2xl font-semibold text-blue-600 border-b-2 border-blue-300 pb-2 mb-6">Contact</h2>
+            <p class="text-gray-700">Connect with me via <a href="mailto:your.email@example.com" class="text-blue-600 hover:underline">email</a> for collaborations or inquiries.</p>
         </section>
     </div>
-
 </body>
 </html>
-
