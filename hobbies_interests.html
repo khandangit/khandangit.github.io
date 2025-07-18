@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smart Tools & Coding Projects</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxvA5u3uCgcqbgxVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script>
     tailwind.config = {
       theme: {
@@ -32,7 +32,7 @@
     .hover-scale {
       transition: transform 0.3s ease;
     }
-    .hover-scale:hover {
+    .hover-scale:hover, .video-thumbnail:hover {
       transform: scale(1.05);
     }
     .section-icon {
@@ -46,6 +46,10 @@
     }
     .video-thumbnail {
       position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
     }
     .video-thumbnail::before {
       content: '\f04b';
@@ -59,84 +63,122 @@
       font-size: 3rem;
       opacity: 0.8;
       transition: opacity 0.3s ease;
+      pointer-events: none;
     }
     .video-thumbnail:hover::before {
       opacity: 1;
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen font-sans">
-  <div class="container max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-8 mt-12 fade-in">
-    <nav class="flex justify-center space-x-4 mb-10 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full p-4 shadow-md">
-      <a href="index.html" class="text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 transition"><i class="fas fa-home mr-2"></i>Home</a>
-      <a href="research.html" class="text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 transition"><i class="fas fa-search mr-2"></i>Research</a>
-      <a href="CV.pdf" target="_blank" class="text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 transition"><i class="fas fa-file-download mr-2"></i>Download CV</a>
-      <a href="Contact.html" class="text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-700 transition"><i class="fas fa-envelope mr-2"></i>Contact</a>
+<body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen font-sans leading-relaxed">
+  <div class="container max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl p-10 mt-16 fade-in">
+    <nav class="flex justify-center space-x-6 mb-12 bg-gradient-to-r from-primary to-accent rounded-full p-5 shadow-lg"
+      role="navigation" aria-label="Primary Navigation">
+      <a href="index.html" class="text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400 transition flex items-center gap-2" aria-label="Home">
+        <i class="fas fa-home text-xl"></i>Home
+      </a>
+      <a href="research.html" class="text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400 transition flex items-center gap-2" aria-label="Research">
+        <i class="fas fa-search text-xl"></i>Research
+      </a>
+      <a href="CV.pdf" target="_blank" class="text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400 transition flex items-center gap-2" aria-label="Download CV">
+        <i class="fas fa-file-download text-xl"></i>Download CV
+      </a>
+      <a href="Contact.html" class="text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400 transition flex items-center gap-2" aria-label="Contact">
+        <i class="fas fa-envelope text-xl"></i>Contact
+      </a>
     </nav>
 
-    <h1 class="text-5xl font-bold text-center text-blue-700 mb-12 flex justify-center items-center"><i class="fas fa-code-branch mr-3 text-4xl text-purple-600"></i>Smart Tools & Coding Projects</h1>
+    <h1 class="text-6xl font-extrabold text-center text-primary mb-16 flex justify-center items-center gap-4 tracking-wide">
+      <i class="fas fa-code-branch text-5xl text-accent"></i>Smart Tools & Coding Projects
+    </h1>
 
-    <section class="mb-16">
-      <h2 class="text-3xl font-semibold text-purple-600 border-b-2 border-purple-300 pb-2 mb-6 flex items-center"><i class="fas fa-robot mr-3 section-icon"></i>Smart Tools & RAG Apps</h2>
-      <p class="text-gray-700 mb-6">Here are some of my interactive tools built using Python, web frameworks, and OpenAI's API to solve real-world problems using smart document retrieval and logic.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="card bg-gray-50 p-6 rounded-lg shadow-md hover-scale">
-          <a href="https://epiplant.up.railway.app/" target="_blank" class="text-blue-600 hover:underline font-semibold"><i class="fas fa-leaf mr-2 text-green-500"></i>Plant Disease Epidemiology</a>
-          <p class="text-gray-600 mt-2">A user-friendly tool for calculating core epidemiology concepts with precision.</p>
+    <section class="mb-20">
+      <h2 class="text-4xl font-semibold text-accent border-b-4 border-accent/40 pb-3 mb-8 flex items-center gap-3 tracking-wide">
+        <i class="fas fa-robot section-icon"></i>Smart Tools & RAG Apps
+      </h2>
+      <p class="text-gray-700 max-w-4xl mx-auto mb-10 px-4 md:px-0">Here are some of my interactive tools built using Python, web frameworks, and OpenAI's API to solve real-world problems using smart document retrieval and logic.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Plant Disease Epidemiology Tool">
+          <a href="https://epiplant.up.railway.app/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+            <i class="fas fa-leaf text-green-600"></i>Plant Disease Epidemiology
+          </a>
+          <p class="text-gray-600 mt-3 leading-relaxed">A user-friendly tool for calculating core epidemiology concepts with precision.</p>
         </div>
-        <div class="card bg-gray-50 p-6 rounded-lg shadow-md hover-scale">
-          <a href="https://khandangit.github.io/wellyfishing/" target="_blank" class="text-blue-600 hover:underline font-semibold"><i class="fas fa-fish mr-2 text-blue-500"></i>Fishing Spots Around Wellington</a>
-          <p class="text-gray-600 mt-2">An interactive map with community-sourced fishing spots and marine species info.</p>
+        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Wellington Fishing">
+          <a href="https://khandangit.github.io/wellyfishing/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+            <i class="fas fa-fish text-blue-500"></i>Fishing Spots Around Wellington
+          </a>
+          <p class="text-gray-600 mt-3 leading-relaxed">An interactive map with community-sourced fishing spots and marine species info.</p>
         </div>
-        <div class="card bg-gray-50 p-6 rounded-lg shadow-md hover-scale">
-          <a href="https://hankapps.shinyapps.io/Animal_IHS_assistant/" target="_blank" class="text-blue-600 hover:underline font-semibold"><i class="fas fa-paw mr-2 text-orange-500"></i>Animal IHS Q&A App</a>
-          <p class="text-gray-600 mt-2">A RAG-powered Shiny app that semantically searches NZ IHS documents and answers regulatory queries.</p>
+        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Animal IHS App">
+          <a href="https://hankapps.shinyapps.io/Animal_IHS_assistant/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+            <i class="fas fa-paw text-orange-500"></i>Animal IHS Q&A App
+          </a>
+          <p class="text-gray-600 mt-3 leading-relaxed">A RAG-powered Shiny app that semantically searches NZ IHS documents and answers regulatory queries.</p>
         </div>
-        <div class="card bg-gray-50 p-6 rounded-lg shadow-md hover-scale">
-          <a href="https://hankapps.shinyapps.io/ISPM_Knowledge_Hub/" target="_blank" class="text-blue-600 hover:underline font-semibold"><i class="fas fa-book-open mr-2 text-green-500"></i>ISPM Knowledge Hub</a>
-          <p class="text-gray-600 mt-2">An advanced RAG platform for exploring Phytosanitary Standards interactively.</p>
+        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ISPM Knowledge Hub">
+          <a href="https://hankapps.shinyapps.io/ISPM_Knowledge_Hub/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+            <i class="fas fa-book-open text-green-500"></i>ISPM Knowledge Hub
+          </a>
+          <p class="text-gray-600 mt-3 leading-relaxed">An advanced RAG platform for exploring Phytosanitary Standards interactively.</p>
         </div>
-        <div class="card bg-gray-50 p-6 rounded-lg shadow-md hover-scale">
-          <a href="https://myanalysers.shinyapps.io/Sampling/" target="_blank" class="text-blue-600 hover:underline font-semibold"><i class="fas fa-calculator mr-2 text-red-500"></i>ISPM31 Sampling Tool</a>
-          <p class="text-gray-600 mt-2">A specialized tool to perform statistically correct sampling in line with ISPM31.</p>
+        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ISPM31 Sampling Tool">
+          <a href="https://myanalysers.shinyapps.io/Sampling/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+            <i class="fas fa-calculator text-red-500"></i>ISPM31 Sampling Tool
+          </a>
+          <p class="text-gray-600 mt-3 leading-relaxed">A specialized tool to perform statistically correct sampling in line with ISPM31.</p>
         </div>
       </div>
     </section>
 
-    <section class="mb-16">
-      <h2 class="text-3xl font-semibold text-blue-600 border-b-2 border-blue-300 pb-2 mb-6 flex items-center"><i class="fas fa-chart-bar mr-3 section-icon"></i>Python & Shiny Apps</h2>
-      <p class="text-gray-700 mb-6">Here are some of my R-powered web apps and data tools, tackling policy, economics, and sampling protocols.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="card bg-gray-50 p-6 rounded-lg shadow-md hover-scale">
-          <a href="https://myanalysers.shinyapps.io/ANZ_Expense_Analyser/" target="_blank" class="text-blue-600 hover:underline font-semibold"><i class="fas fa-wallet mr-2 text-yellow-500"></i>ANZ Expense Analyzer</a>
-          <p class="text-gray-600 mt-2">Easily upload and dissect your expenses using intuitive visual breakdowns.</p>
+    <section class="mb-20">
+      <h2 class="text-4xl font-semibold text-primary border-b-4 border-primary/40 pb-3 mb-8 flex items-center gap-3 tracking-wide">
+        <i class="fas fa-chart-bar section-icon"></i>Python & Shiny Apps
+      </h2>
+      <p class="text-gray-700 max-w-3xl mx-auto mb-10 px-4 md:px-0">Here are some of my R-powered web apps and data tools, tackling policy, economics, and sampling protocols.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ANZ Expense Analyzer">
+          <a href="https://myanalysers.shinyapps.io/ANZ_Expense_Analyser/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+            <i class="fas fa-wallet text-yellow-500"></i>ANZ Expense Analyzer
+          </a>
+          <p class="text-gray-600 mt-3 leading-relaxed">Easily upload and dissect your expenses using intuitive visual breakdowns.</p>
         </div>
-        <div class="card bg-gray-50 p-6 rounded-lg shadow-md hover-scale">
-          <a href="https://www.nzdirr.info/" target="_blank" class="text-blue-600 hover:underline font-semibold"><i class="fas fa-exchange-alt mr-2 text-purple-500"></i>NZD to IRR Real-Time Calculator</a>
-          <p class="text-gray-600 mt-2">A fast tool using web scraping to calculate accurate conversion rates.</p>
+        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="NZD to IRR Calculator">
+          <a href="https://www.nzdirr.info/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+            <i class="fas fa-exchange-alt text-purple-500"></i>NZD to IRR Real-Time Calculator
+          </a>
+          <p class="text-gray-600 mt-3 leading-relaxed">A fast tool using web scraping to calculate accurate conversion rates.</p>
         </div>
       </div>
     </section>
 
-    <section class="mb-16">
-      <h2 class="text-3xl font-semibold text-pink-600 border-b-2 border-pink-300 pb-2 mb-6 flex items-center"><i class="fas fa-music mr-3 section-icon"></i>The Music I Play</h2>
-      <p class="text-gray-700 mb-6">I play the Persian Santur — a stunning 72-string hammered dulcimer. Played with light mallets (Mezrab), it resonates beautifully in Persian classical music.</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <a href="https://youtu.be/vS4JNb_6e3U?si=FWl7BhnNfu8j3HJ8" target="_blank" class="hover-scale video-thumbnail">
-          <img src="https://img.youtube.com/vi/vS4JNb_6e3U/0.jpg" alt="Santur YouTube Video 1" class="w-full rounded-lg shadow-md">
+    <section class="mb-20">
+      <h2 class="text-4xl font-semibold text-pink-600 border-b-4 border-pink-300 pb-3 mb-8 flex items-center gap-3 tracking-wide">
+        <i class="fas fa-music section-icon"></i>The Music I Play
+      </h2>
+      <p class="text-gray-700 max-w-3xl mx-auto mb-12 px-4 md:px-0">
+        I play the Persian Santur — a stunning 72-string hammered dulcimer. Played with light mallets (Mezrab), it resonates beautifully in Persian classical music.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <a href="https://youtu.be/vS4JNb_6e3U?si=FWl7BhnNfu8j3HJ8" target="_blank" class="video-thumbnail hover-scale aria-label='Santur YouTube Video 1'">
+          <img src="https://img.youtube.com/vi/vS4JNb_6e3U/0.jpg" alt="Santur YouTube Video 1" class="w-full object-cover" />
         </a>
-        <a href="https://youtu.be/F3O0GBNDZtY?si=XvwcskEwheNK229v" target="_blank" class="hover-scale video-thumbnail">
-          <img src="https://img.youtube.com/vi/F3O0GBNDZtY/0.jpg" alt="Santur YouTube Video 2" class="w-full rounded-lg shadow-md">
+        <a href="https://youtu.be/F3O0GBNDZtY?si=XvwcskEwheNK229v" target="_blank" class="video-thumbnail hover-scale aria-label='Santur YouTube Video 2'">
+          <img src="https://img.youtube.com/vi/F3O0GBNDZtY/0.jpg" alt="Santur YouTube Video 2" class="w-full object-cover" />
         </a>
-        <a href="https://youtu.be/78djmQZC48U?si=9DRP6YQ2bg_TaDaC" target="_blank" class="hover-scale video-thumbnail">
-          <img src="https://img.youtube.com/vi/78djmQZC48U/0.jpg" alt="Santur YouTube Video 3" class="w-full rounded-lg shadow-md">
+        <a href="https://youtu.be/78djmQZC48U?si=9DRP6YQ2bg_TaDaC" target="_blank" class="video-thumbnail hover-scale aria-label='Santur YouTube Video 3'">
+          <img src="https://img.youtube.com/vi/78djmQZC48U/0.jpg" alt="Santur YouTube Video 3" class="w-full object-cover" />
         </a>
       </div>
     </section>
 
-    <section id="contact">
-      <h2 class="text-2xl font-semibold text-blue-600 border-b-2 border-blue-300 pb-2 mb-6 flex items-center"><i class="fas fa-envelope-open-text mr-3 section-icon"></i>Contact</h2>
-      <p class="text-gray-700 text-lg">Feel free to <a href="mailto:khandangithub@gmail.com" class="text-blue-600 hover:underline">email me</a> for project collaborations, data tools, or tech consulting.</p>
+    <section id="contact" class="mb-12 max-w-3xl mx-auto px-4 md:px-0">
+      <h2 class="text-3xl font-semibold text-primary border-b-4 border-primary/40 pb-3 mb-6 flex items-center gap-3 tracking-wide">
+        <i class="fas fa-envelope-open-text section-icon"></i>Contact
+      </h2>
+      <p class="text-gray-700 text-lg max-w-xl">
+        Feel free to <a href="mailto:khandangithub@gmail.com" class="text-primary hover:underline" aria-label="Email khandangithub">email me</a> for project collaborations, data tools, or tech consulting.
+      </p>
     </section>
   </div>
 </body>
