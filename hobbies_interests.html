@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Tools & Coding Projects</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,152 +32,222 @@
     .hover-scale {
       transition: transform 0.3s ease;
     }
-    .hover-scale:hover, .video-thumbnail:hover {
+    .hover-scale:hover {
       transform: scale(1.05);
-    }
-    .section-icon {
-      color: #3B82F6;
     }
     .card {
       transition: all 0.3s ease;
+      border-radius: 1rem;
+      overflow: hidden;
     }
     .card:hover {
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
-    .video-thumbnail {
-      position: relative;
-      display: block;
-      overflow: hidden;
-      border-radius: 0.75rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
-    }
-    .video-thumbnail::before {
-      content: '\f04b';
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
       color: white;
-      font-size: 3rem;
-      opacity: 0.8;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
+      cursor: pointer;
+      padding: 0.5rem;
     }
-    .video-thumbnail:hover::before {
-      opacity: 1;
+    @media (max-width: 640px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        background: #3B82F6;
+        padding: 0.5rem;
+        flex-direction: column;
+        border-radius: 0 0 0.5rem 0.5rem;
+      }
+      .nav-menu.active {
+        display: flex;
+      }
+      nav a {
+        padding: 0.5rem;
+        width: 100%;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      .container {
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        max-width: 100%;
+        width: 95%;
+      }
+      h1 {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem;
+      }
+      h2 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.5rem;
+      }
+      .grid-cols-2, .grid-cols-3 {
+        grid-template-columns: 1fr !important;
+      }
+      .card {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      p {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    @media (min-width: 641px) {
+      .container {
+        max-width: 5xl;
+        padding: 2rem;
+      }
+      h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      .card {
+        padding: 1rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      nav a {
+        font-size: 1rem;
+      }
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.nav-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('active');
+        });
+      }
+    });
+  </script>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen font-sans leading-relaxed">
-  <div class="container max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl p-10 mt-16 fade-in">
-    <nav class="flex justify-center space-x-6 mb-12 bg-gradient-to-r from-primary to-accent rounded-full p-5 shadow-lg"
+  <div class="container mx-auto bg-white rounded-3xl shadow-2xl fade-in">
+    <nav class="flex justify-between items-center space-x-2 mb-4 bg-gradient-to-r from-primary to-accent rounded-full p-2 shadow-lg relative"
       role="navigation" aria-label="Primary Navigation">
-      <a href="index.html" class="text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400 transition flex items-center gap-2" aria-label="Home">
-        <i class="fas fa-home text-xl"></i>Home
-      </a>
-      <a href="research.html" class="text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400 transition flex items-center gap-2" aria-label="Research">
-        <i class="fas fa-search text-xl"></i>Research
-      </a>
-      <a href="Hossein_Narouei_Khandan_CV.pdf" target="_blank" class="text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400 transition flex items-center gap-2" aria-label="Download CV">
-  <i class="fas fa-file-download text-xl"></i>Download CV
-</a>
-
-      <a href="Contact.html" class="text-white font-semibold px-5 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-400 transition flex items-center gap-2" aria-label="Contact">
-        <i class="fas fa-envelope text-xl"></i>Contact
-      </a>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+      <div class="nav-menu flex space-x-2">
+        <a href="index.html" class="text-white font-semibold px-2 py-1 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition flex items-center gap-1" aria-label="Home">
+          <i class="fas fa-home"></i>Home
+        </a>
+        <a href="research.html" class="text-white font-semibold px-2 py-1 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition flex items-center gap-1" aria-label="Research">
+          <i class="fas fa-search"></i>Research
+        </a>
+        <a href="Hossein_Narouei_Khandan_CV.pdf" target="_blank" class="text-white font-semibold px-2 py-1 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition flex items-center gap-1" aria-label="Download CV">
+          <i class="fas fa-file-download"></i>Download CV
+        </a>
+        <a href="Contact.html" class="text-white font-semibold px-2 py-1 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition flex items-center gap-1" aria-label="Contact">
+          <i class="fas fa-envelope"></i>Contact
+        </a>
+      </div>
     </nav>
 
-    <h1 class="text-6xl font-extrabold text-center text-primary mb-16 flex justify-center items-center gap-4 tracking-wide">
-      <i class="fas fa-code-branch text-5xl text-accent"></i>Smart Tools & Coding Projects
+    <h1 class="text-center text-primary mb-6 flex justify-center items-center gap-2 tracking-wide">
+      <i class="fas fa-code-branch text-accent"></i>Smart Tools & Coding Projects
     </h1>
 
-    <section class="mb-20">
-      <h2 class="text-4xl font-semibold text-accent border-b-4 border-accent/40 pb-3 mb-8 flex items-center gap-3 tracking-wide">
-        <i class="fas fa-robot section-icon"></i>Smart Tools & RAG Apps
+    <section class="mb-6">
+      <h2 class="text-accent border-b-2 border-accent/40 pb-1 mb-4 flex items-center gap-2 tracking-wide">
+        <i class="fas fa-robot"></i>Smart Tools & RAG Apps
       </h2>
-      <p class="text-gray-700 max-w-4xl mx-auto mb-10 px-4 md:px-0">Here are some of my interactive tools built using Python, web frameworks, and OpenAI's API to solve real-world problems using smart document retrieval and logic.</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Plant Disease Epidemiology Tool">
-          <a href="https://epiplant.up.railway.app/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+      <p class="text-gray-700 max-w-prose mx-auto mb-4 px-1">Here are some of my interactive tools built using Python, web frameworks, and OpenAI's API to solve real-world problems using smart document retrieval and logic.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Plant Disease Epidemiology">
+          <a href="https://epiplant.up.railway.app/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-leaf text-green-600"></i>Plant Disease Epidemiology
           </a>
-          <p class="text-gray-600 mt-3 leading-relaxed">A user-friendly tool for calculating core epidemiology concepts with precision.</p>
+          <p class="text-gray-600 mt-1 leading-relaxed">A user-friendly tool for calculating core epidemiology concepts with precision.</p>
         </div>
-        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Wellington Fishing">
-          <a href="https://khandangit.github.io/wellyfishing/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+        <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Fishing Spots Around Wellington">
+          <a href="https://khandangit.github.io/wellyfishing/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-fish text-blue-500"></i>Fishing Spots Around Wellington
           </a>
-          <p class="text-gray-600 mt-3 leading-relaxed">An interactive map with community-sourced fishing spots and marine species info.</p>
+          <p class="text-gray-600 mt-1 leading-relaxed">An interactive map with community-sourced fishing spots and marine species info.</p>
         </div>
-        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Animal IHS App">
-          <a href="https://hankapps.shinyapps.io/Animal_IHS_assistant/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+        <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Animal IHS Q&A App">
+          <a href="https://hankapps.shinyapps.io/Animal_IHS_assistant/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-paw text-orange-500"></i>Animal IHS Q&A App
           </a>
-          <p class="text-gray-600 mt-3 leading-relaxed">A RAG-powered Shiny app that semantically searches NZ IHS documents and answers regulatory queries.</p>
+          <p class="text-gray-600 mt-1 leading-relaxed">A RAG-powered Shiny app that semantically searches NZ IHS documents and answers regulatory queries.</p>
         </div>
-        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ISPM Knowledge Hub">
-          <a href="https://hankapps.shinyapps.io/ISPM_Knowledge_Hub/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+        <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ISPM Knowledge Hub">
+          <a href="https://hankapps.shinyapps.io/ISPM_Knowledge_Hub/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-book-open text-green-500"></i>ISPM Knowledge Hub
           </a>
-          <p class="text-gray-600 mt-3 leading-relaxed">An advanced RAG platform for exploring Phytosanitary Standards interactively.</p>
+          <p class="text-gray-600 mt-1 leading-relaxed">An advanced RAG platform for exploring Phytosanitary Standards interactively.</p>
         </div>
-        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ISPM31 Sampling Tool">
-          <a href="https://myanalysers.shinyapps.io/Sampling/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+        <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ISPM31 Sampling Tool">
+          <a href="https://myanalysers.shinyapps.io/Sampling/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-calculator text-red-500"></i>ISPM31 Sampling Tool
           </a>
-          <p class="text-gray-600 mt-3 leading-relaxed">A specialized tool to perform statistically correct sampling in line with ISPM31.</p>
+          <p class="text-gray-600 mt-1 leading-relaxed">A specialized tool to perform statistically correct sampling in line with ISPM31.</p>
         </div>
       </div>
     </section>
 
-    <section class="mb-20">
-      <h2 class="text-4xl font-semibold text-primary border-b-4 border-primary/40 pb-3 mb-8 flex items-center gap-3 tracking-wide">
-        <i class="fas fa-chart-bar section-icon"></i>Python & Shiny Apps
+    <section class="mb-6">
+      <h2 class="text-primary border-b-2 border-primary/40 pb-1 mb-4 flex items-center gap-2 tracking-wide">
+        <i class="fas fa-chart-bar"></i>Python & Shiny Apps
       </h2>
-      <p class="text-gray-700 max-w-3xl mx-auto mb-10 px-4 md:px-0">Here are some of my R-powered web apps and data tools, tackling policy, economics, and sampling protocols.</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ANZ Expense Analyzer">
-          <a href="https://myanalysers.shinyapps.io/ANZ_Expense_Analyser/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+      <p class="text-gray-700 max-w-prose mx-auto mb-4 px-1">Here are some of my R-powered web apps and data tools, tackling policy, economics, and sampling protocols.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ANZ Expense Analyzer">
+          <a href="https://myanalysers.shinyapps.io/ANZ_Expense_Analyser/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-wallet text-yellow-500"></i>ANZ Expense Analyzer
           </a>
-          <p class="text-gray-600 mt-3 leading-relaxed">Easily upload and dissect your expenses using intuitive visual breakdowns.</p>
+          <p class="text-gray-600 mt-1 leading-relaxed">Easily upload and dissect your expenses using intuitive visual breakdowns.</p>
         </div>
-        <div class="card bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="NZD to IRR Calculator">
-          <a href="https://www.nzdirr.info/" target="_blank" class="text-primary hover:underline font-semibold text-lg flex items-center gap-3">
+        <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="NZD to IRR Real-Time Calculator">
+          <a href="https://www.nzdirr.info/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-exchange-alt text-purple-500"></i>NZD to IRR Real-Time Calculator
           </a>
-          <p class="text-gray-600 mt-3 leading-relaxed">A fast tool using web scraping to calculate accurate conversion rates.</p>
+          <p class="text-gray-600 mt-1 leading-relaxed">A fast tool using web scraping to calculate accurate conversion rates.</p>
         </div>
       </div>
     </section>
 
-    <section class="mb-20">
-      <h2 class="text-4xl font-semibold text-pink-600 border-b-4 border-pink-300 pb-3 mb-8 flex items-center gap-3 tracking-wide">
-        <i class="fas fa-music section-icon"></i>The Music I Play
+    <section class="mb-6">
+      <h2 class="text-pink-600 border-b-2 border-pink-300 pb-1 mb-4 flex items-center gap-2 tracking-wide">
+        <i class="fas fa-music"></i>The Music I Play
       </h2>
-      <p class="text-gray-700 max-w-3xl mx-auto mb-12 px-4 md:px-0">
+      <p class="text-gray-700 max-w-prose mx-auto mb-4 px-1">
         I play the Persian Santur — a stunning 72-string hammered dulcimer. Played with light mallets (Mezrab), it resonates beautifully in Persian classical music.
       </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <a href="https://youtu.be/vS4JNb_6e3U?si=FWl7BhnNfu8j3HJ8" target="_blank" class="video-thumbnail hover-scale aria-label='Santur YouTube Video 1'">
-          <img src="https://img.youtube.com/vi/vS4JNb_6e3U/0.jpg" alt="Santur YouTube Video 1" class="w-full object-cover" />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+        <a href="https://youtu.be/vS4JNb_6e3U?si=FWl7BhnNfu8j3HJ8" target="_blank" class="block overflow-hidden rounded-xl shadow-md hover-scale">
+          <img src="https://img.youtube.com/vi/vS4JNb_6e3U/0.jpg" alt="Santur YouTube Video 1" class="w-full h-auto" />
         </a>
-        <a href="https://youtu.be/F3O0GBNDZtY?si=XvwcskEwheNK229v" target="_blank" class="video-thumbnail hover-scale aria-label='Santur YouTube Video 2'">
-          <img src="https://img.youtube.com/vi/F3O0GBNDZtY/0.jpg" alt="Santur YouTube Video 2" class="w-full object-cover" />
+        <a href="https://youtu.be/F3O0GBNDZtY?si=XvwcskEwheNK229v" target="_blank" class="block overflow-hidden rounded-xl shadow-md hover-scale">
+          <img src="https://img.youtube.com/vi/F3O0GBNDZtY/0.jpg" alt="Santur YouTube Video 2" class="w-full h-auto" />
         </a>
-        <a href="https://youtu.be/78djmQZC48U?si=9DRP6YQ2bg_TaDaC" target="_blank" class="video-thumbnail hover-scale aria-label='Santur YouTube Video 3'">
-          <img src="https://img.youtube.com/vi/78djmQZC48U/0.jpg" alt="Santur YouTube Video 3" class="w-full object-cover" />
+        <a href="https://youtu.be/78djmQZC48U?si=9DRP6YQ2bg_TaDaC" target="_blank" class="block overflow-hidden rounded-xl shadow-md hover-scale">
+          <img src="https://img.youtube.com/vi/78djmQZC48U/0.jpg" alt="Santur YouTube Video 3" class="w-full h-auto" />
         </a>
       </div>
     </section>
 
-    <section id="contact" class="mb-12 max-w-3xl mx-auto px-4 md:px-0">
-      <h2 class="text-3xl font-semibold text-primary border-b-4 border-primary/40 pb-3 mb-6 flex items-center gap-3 tracking-wide">
-        <i class="fas fa-envelope-open-text section-icon"></i>Contact
+    <section class="mb-4 max-w-prose mx-auto px-1">
+      <h2 class="text-primary border-b-2 border-primary/40 pb-1 mb-3 flex items-center gap-2 tracking-wide">
+        <i class="fas fa-envelope-open-text"></i>Contact
       </h2>
-      <p class="text-gray-700 text-lg max-w-xl">
+      <p class="text-gray-700 text-sm md:text-base">
         Feel free to <a href="mailto:khandangithub@gmail.com" class="text-primary hover:underline" aria-label="Email khandangithub">email me</a> for project collaborations, data tools, or tech consulting.
       </p>
     </section>
