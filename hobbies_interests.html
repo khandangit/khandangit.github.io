@@ -26,104 +26,36 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .fade-in {
-      animation: fadeIn 0.8s ease-out;
-    }
-    .hover-scale {
-      transition: transform 0.3s ease;
-    }
-    .hover-scale:hover {
-      transform: scale(1.05);
-    }
-    .card {
-      transition: all 0.3s ease;
-      border-radius: 1rem;
-      overflow: hidden;
-    }
-    .card:hover {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-    .menu-toggle {
-      display: none;
-      font-size: 1.5rem;
-      color: white;
-      cursor: pointer;
-      padding: 0.5rem;
-    }
+    .fade-in { animation: fadeIn 0.8s ease-out; }
+    .hover-scale { transition: transform 0.3s ease; }
+    .hover-scale:hover { transform: scale(1.05); }
+    .card { transition: all 0.3s ease; border-radius: 1rem; overflow: hidden; }
+    .card:hover { box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
+    .menu-toggle { display:none; font-size:1.5rem; color:#fff; cursor:pointer; padding:.5rem; }
+
     @media (max-width: 640px) {
-      .menu-toggle {
-        display: block;
-      }
+      .menu-toggle { display:block; }
       .nav-menu {
-        display: none;
-        position: absolute;
-        top: 50px;
-        left: 0;
-        right: 0;
-        background: #3B82F6;
-        padding: 0.5rem;
-        flex-direction: column;
-        border-radius: 0 0 0.5rem 0.5rem;
+        display:none; position:absolute; top:50px; left:0; right:0;
+        background:#3B82F6; padding:.5rem; flex-direction:column; border-radius:0 0 .5rem .5rem;
       }
-      .nav-menu.active {
-        display: flex;
-      }
-      nav a {
-        padding: 0.5rem;
-        width: 100%;
-        text-align: center;
-        font-size: 0.9rem;
-      }
-      .container {
-        margin-top: 0.5rem;
-        padding: 0.5rem;
-        max-width: 100%;
-        width: 95%;
-      }
-      h1 {
-        font-size: 1.5rem !important;
-        margin-bottom: 0.5rem;
-      }
-      h2 {
-        font-size: 1.2rem !important;
-        margin-bottom: 0.5rem;
-      }
-      .grid-cols-2, .grid-cols-3 {
-        grid-template-columns: 1fr !important;
-      }
-      .card {
-        padding: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-      p {
-        font-size: 0.8rem;
-        margin-bottom: 0.5rem;
-      }
-      img {
-        width: 100%;
-        height: auto;
-      }
+      .nav-menu.active { display:flex; }
+      nav a { padding:.5rem; width:100%; text-align:center; font-size:.9rem; }
+      .container { margin-top:.5rem; padding:.5rem; max-width:100%; width:95%; }
+      h1 { font-size:1.5rem !important; margin-bottom:.5rem; }
+      h2 { font-size:1.2rem !important; margin-bottom:.5rem; }
+      .grid-cols-2, .grid-cols-3 { grid-template-columns:1fr !important; }
+      .card { padding:.5rem; margin-bottom:.5rem; }
+      p { font-size:.8rem; margin-bottom:.5rem; }
+      img { width:100%; height:auto; }
     }
     @media (min-width: 641px) {
-      .container {
-        max-width: 5xl;
-        padding: 2rem;
-      }
-      h1 {
-        font-size: 3rem;
-      }
-      h2 {
-        font-size: 2rem;
-      }
-      .card {
-        padding: 1rem;
-      }
-      p {
-        font-size: 1rem;
-      }
-      nav a {
-        font-size: 1rem;
-      }
+      .container { max-width:5xl; padding:2rem; }
+      h1 { font-size:3rem; }
+      h2 { font-size:2rem; }
+      .card { padding:1rem; }
+      p { font-size:1rem; }
+      nav a { font-size:1rem; }
     }
   </style>
   <script>
@@ -136,10 +68,9 @@
         toggle.addEventListener('click', () => {
           menu.classList.toggle('active');
         });
-
         navLinks.forEach(link => {
           link.addEventListener('click', () => {
-            menu.classList.remove('active'); // Close menu when a link is clicked
+            menu.classList.remove('active');
           });
         });
       }
@@ -175,48 +106,65 @@
       <h2 class="text-accent border-b-2 border-accent/40 pb-1 mb-4 flex items-center gap-2 tracking-wide">
         <i class="fas fa-robot"></i>Smart Tools & RAG Apps
       </h2>
-      <p class="text-gray-700 max-w-prose mx-auto mb-4 px-1">Here are some of my interactive tools built using Python, web frameworks, and OpenAI's API to solve real-world problems using smart document retrieval and logic.</p>
+      <p class="text-gray-700 max-w-prose mx-auto mb-4 px-1">
+        Here are some of my interactive tools built using Python, web frameworks, and OpenAI's API to solve real-world problems using smart document retrieval and logic.
+      </p>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
 
-        <!-- NEW: Risk Animation Tool card (replace href with your live URL) -->
+        <!-- Risk Animation Tool (Simulation) -->
         <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer relative" tabindex="0" role="link" aria-label="Risk Animation Tool">
-          <a href="https://khandangit.github.io/riskanim/" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
+          <a href="risk_animation.html" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-biohazard text-rose-600"></i>Risk Animation Tool
-            <span class="ml-2 inline-flex items-center text-[10px] font-bold uppercase tracking-wide bg-rose-100 text-rose-700 px-2 py-[2px] rounded-full">New</span>
+            <span class="ml-2 inline-flex items-center text-[10px] font-bold uppercase tracking-wide bg-rose-100 text-rose-700 px-2 py-[2px] rounded-full">Simulation</span>
+            <span class="ml-1 inline-flex items-center text-[10px] font-bold uppercase tracking-wide bg-rose-100/60 text-rose-700 px-2 py-[2px] rounded-full">New</span>
           </a>
           <p class="text-gray-600 mt-1 leading-relaxed">
             Animate spatiotemporal risk scenarios over time from GIS layers and parameters. Scrub through frames, compare “what-if” runs, and export GIF/MP4 for reports.
           </p>
         </div>
-        <!-- /NEW -->
 
+        <!-- Plant Disease Epidemiology (Epidemiology) -->
         <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Plant Disease Epidemiology">
           <a href="https://epiplant.up.railway.app/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-leaf text-green-600"></i>Plant Disease Epidemiology
+            <span class="ml-2 inline-flex items-center text-[10px] font-bold uppercase tracking-wide bg-green-100 text-green-700 px-2 py-[2px] rounded-full">Epidemiology</span>
           </a>
           <p class="text-gray-600 mt-1 leading-relaxed">A user-friendly tool for calculating core epidemiology concepts with precision.</p>
         </div>
+
+        <!-- Fishing Spots Around Wellington (Map) -->
         <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Fishing Spots Around Wellington">
           <a href="https://khandangit.github.io/wellyfishing/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-fish text-blue-500"></i>Fishing Spots Around Wellington
+            <span class="ml-2 inline-flex items-center text-[10px] font-bold uppercase tracking-wide bg-emerald-100 text-emerald-700 px-2 py-[2px] rounded-full">Map</span>
           </a>
           <p class="text-gray-600 mt-1 leading-relaxed">An interactive map with community-sourced fishing spots and marine species info.</p>
         </div>
+
+        <!-- Animal IHS Q&A App (RAG) -->
         <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="Animal IHS Q&A App">
           <a href="https://hankapps.shinyapps.io/Animal_IHS_assistant/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-paw text-orange-500"></i>Animal IHS Q&A App
+            <span class="ml-2 inline-flex items-center text-[10px] font-bold uppercase tracking-wide bg-indigo-100 text-indigo-700 px-2 py-[2px] rounded-full">RAG</span>
           </a>
           <p class="text-gray-600 mt-1 leading-relaxed">A RAG-powered Shiny app that semantically searches NZ IHS documents and answers regulatory queries.</p>
         </div>
+
+        <!-- ISPM Knowledge Hub (RAG) -->
         <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ISPM Knowledge Hub">
           <a href="https://hankapps.shinyapps.io/ISPM_Knowledge_Hub/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-book-open text-green-500"></i>ISPM Knowledge Hub
+            <span class="ml-2 inline-flex items-center text-[10px] font-bold uppercase tracking-wide bg-indigo-100 text-indigo-700 px-2 py-[2px] rounded-full">RAG</span>
           </a>
           <p class="text-gray-600 mt-1 leading-relaxed">An advanced RAG platform for exploring Phytosanitary Standards interactively.</p>
         </div>
+
+        <!-- ISPM31 Sampling Tool (Sampling) -->
         <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ISPM31 Sampling Tool">
           <a href="https://myanalysers.shinyapps.io/Sampling/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-calculator text-red-500"></i>ISPM31 Sampling Tool
+            <span class="ml-2 inline-flex items-center text-[10px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 px-2 py-[2px] rounded-full">Sampling</span>
           </a>
           <p class="text-gray-600 mt-1 leading-relaxed">A specialized tool to perform statistically correct sampling in line with ISPM31.</p>
         </div>
@@ -228,16 +176,22 @@
         <i class="fas fa-chart-bar"></i>Python & Shiny Apps
       </h2>
       <p class="text-gray-700 max-w-prose mx-auto mb-4 px-1">Here are some of my R-powered web apps and data tools, tackling policy, economics, and sampling protocols.</p>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <!-- ANZ Expense Analyzer (Finance) -->
         <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="ANZ Expense Analyzer">
           <a href="https://myanalysers.shinyapps.io/ANZ_Expense_Analyser/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-wallet text-yellow-500"></i>ANZ Expense Analyzer
+            <span class="ml-2 inline-flex items-center text-[10px] font-bold uppercase tracking-wide bg-yellow-100 text-yellow-700 px-2 py-[2px] rounded-full">Finance</span>
           </a>
           <p class="text-gray-600 mt-1 leading-relaxed">Easily upload and dissect your expenses using intuitive visual breakdowns.</p>
         </div>
+
+        <!-- NZD to IRR Real-Time Calculator (Web Scraping) -->
         <div class="card bg-gray-50 rounded-xl shadow-lg hover-scale transition transform cursor-pointer" tabindex="0" role="link" aria-label="NZD to IRR Real-Time Calculator">
           <a href="https://www.nzdirr.info/" target="_blank" class="text-primary hover:underline font-semibold text-sm md:text-base flex items-center gap-1">
             <i class="fas fa-exchange-alt text-purple-500"></i>NZD to IRR Real-Time Calculator
+            <span class="ml-2 inline-flex items-center text-[10px] font-bold uppercase tracking-wide bg-cyan-100 text-cyan-700 px-2 py-[2px] rounded-full">Web Scraping</span>
           </a>
           <p class="text-gray-600 mt-1 leading-relaxed">A fast tool using web scraping to calculate accurate conversion rates.</p>
         </div>
