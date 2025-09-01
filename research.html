@@ -3,171 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research - Hossein</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to your external CSS file -->
+    <title>Research - Hossein Narouei Khandan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babel-standalone@6.26.0/babel.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f0f4f8; /* Light gray-blue background color */
+            background: linear-gradient(135deg, #1e3a8a, #6b7280);
+            color: #1f2937;
         }
-
-        header {
-            background-image: url('header-image.jpg'); /* Use the same header image */
+        .bg-header {
+            background-image: url('header-image.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            width: 100%;
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 0;
+            position: relative;
         }
-
-        header h1 {
-            font-size: 3em;
-            margin: 0;
+        .bg-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
         }
-
-        nav {
-            text-align: center;
-            background-color: #333;
-            padding: 10px 0;
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 1.1em;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-
-        nav a:hover {
-            text-decoration: underline;
+        .sidebar {
+            transition: transform 0.3s ease;
         }
-
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #ffffff; /* White background for the content box */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .container h2 {
-            color: #0056b3;
-            text-align: center;
-        }
-
-        .container p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-
-        .publication-list {
-            margin-top: 20px;
-            padding: 20px; /* Adds padding around the content */
-            background-color: #e8f0fe; /* Light blue background color */
-            border-radius: 8px; /* Adds rounded corners */
-        }
-
-        .publication-list li {
-            margin-bottom: 10px;
-        }
-
-        .publication-list a {
-            color: #0056b3;
-            text-decoration: none;
-        }
-
-        .publication-list a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        footer a {
-            color: #f4f4f4;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
+        .sidebar.hidden {
+            transform: translateX(-100%);
         }
     </style>
 </head>
 <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
 
-    <!-- Header Section -->
-    <header>
-        <h1>My Research</h1>
-    </header>
+        function NavLink({ href, children, target }) {
+            return (
+                <a
+                    href={href}
+                    target={target}
+                    rel={target === "_blank" ? "noopener noreferrer" : undefined}
+                    className="block py-2 px-4 text-white hover:bg-blue-700 rounded-md transition duration-300"
+                >
+                    {children}
+                </a>
+            );
+        }
 
-    <!-- Navigation Menu -->
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="hobbies_interests.html">Coding Adventures & Music</a>
-        <a href="Hossein_Narouei_Khandan_CV.pdf" target="_blank">Download my CV</a>
-        <a href="Contact.html">Contact Me</a>
-    </nav>
+        function PublicationItem({ href, children }) {
+            return (
+                <li className="mb-3">
+                    <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 hover:text-blue-700 hover:underline transition duration-200"
+                    >
+                        {children}
+                    </a>
+                </li>
+            );
+        }
 
-    <!-- Main Content -->
-    <div class="container">
-        <h2>Research Overview</h2>
-        <p>My research is primarily focused on understanding the complex interactions between biological systems and environmental factors through quantitative modeling. I specialize in plant and animal disease epidemiology, spatial analysis, and ecological modeling. By leveraging advanced modeling techniques, my work aims to predict and mitigate the impact of diseases and environmental changes on ecosystems.</p>
-        
-        <h2>Key Areas of Research</h2>
-        
-        <h3>1. Plant Disease Epidemiology</h3>
-        <p>
-            I investigate the spread and control of plant diseases using simulation models that incorporate climatic variables, host-pathogen interactions, and landscape features. I develop tools that could help students, farmers, and policymakers make informed decisions to protect crops from emerging threats. Have a look at my recent app called 
-            <a href="https://epiplant.up.railway.app/" target="_blank">EpiPlant</a> in the Coding Adventures page.
-        </p>
-        
-        <h3>2. Spatial and Ecological Modeling</h3>
-        <p>I apply spatial modeling techniques to study the distribution and behavior of species in response to environmental changes. My research includes modeling species distributions under current and future climate scenarios, with an emphasis on conservation planning and biodiversity management.</p>
+        function CollapsibleSection({ title, children }) {
+            const [isOpen, setIsOpen] = useState(true);
+            return (
+                <div className="card bg-white rounded-xl p-6 mb-6 shadow-lg">
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="w-full text-left text-2xl font-semibold text-blue-800 flex justify-between items-center"
+                    >
+                        {title}
+                        <span className="text-blue-500">{isOpen ? '−' : '+'}</span>
+                    </button>
+                    {isOpen && (
+                        <div className="mt-4 text-lg text-gray-700 leading-relaxed animate-fade-in">
+                            {children}
+                        </div>
+                    )}
+                </div>
+            );
+        }
 
-        <h3>3. Animal Disease Modeling</h3>
-        <p>My work in animal disease modeling includes a significant focus on the transmission dynamics of zoonotic diseases. During my tenure as a Data Analyst in the M. bovis eradication program at the Ministry for Primary Industries, New Zealand, I contributed to the development and implementation of advanced statistical models to track and predict the spread of Mycoplasma bovis among cattle populations. By analyzing large datasets, I assessed the risks associated with different transmission pathways and identified potential hotspots for outbreaks. This work was critical in informing disease management strategies, optimizing surveillance efforts, and supporting decision-making processes aimed at eradicating M. bovis from New Zealand. My expertise in data modeling and analysis played a pivotal role in guiding biosecurity measures and minimizing the impact of this disease on the livestock industry.</p>
-        
-        
-        <h2>Collaborations</h2>
-        <p>I actively collaborate with researchers, institutions, and industry partners to enhance the practical application of my research. These partnerships are essential for translating scientific insights into real-world solutions that benefit both human and environmental health.</p>
-    
-        <!-- Publications List -->
-        <h2>Publications</h2>
-        <ul class="publication-list">
-            <li><a href="https://doi.org/10.1007/s10658-015-0804-7" target="_blank">Global climate suitability of citrus huanglongbing and its vector...</a></li>
-            <li><a href="https://doi.org/10.1007/s10658-016-0921-y" target="_blank">First occurrence of Diaphorina citri in East Africa, characterization of the Ca. Liberibacter species causing Huanglongbing (HLB) in Tanzania...</a></li>
-            <li><a href="https://doi.org/10.1016/j.cropro.2016.08.025" target="_blank">Effects and side effects of penicillin injection in Huanglongbing affected grapefruit trees. Crop Protection. 90: 106-116</a></li>
-            <li><a href="https://doi.org/10.1111/1365-2664.13455" target="_blank">Predicting the fundamental thermal niche of crop pests and diseases in a changing world: A case study on citrus greening, Journal of Applied Ecology, 2019</a></li>
-            <li><a href=" https://doi.org/10.1111/ppa.13111" target="_blank">Projecting the suitability of global and local habitats for myrtle rust (Austropuccinia psidii) using model consensus, Plant Pathology, 2019</a></li>
-            <li><a href="https://doi.org/10.1007/s10658-017-1146-4" target="_blank">Potential global and regional geographic distribution of Phomopsis vaccinii on Vaccinium species projected by two species distribution models, Euro J of Plant Pathology, 4, 919-930, 2017</a></li>
-            <li><a href=" https://doi.org/10.1111/ppa.12637" target="_blank">Local and regional spread of banana Xanthomonas wilt (BXW) in space and over time in Kagera, Tanzania, Plant Pathology, 2017</a></li>
-            <li><a href="https://doi.org/10.3390/pathogens9080659" target="_blank">BLIGHTSIM: A New Potato Late Blight Model Simulating the Response of Phytophthora infestans to Diurnal Temperature and Humidity Fluctuations in Relation to Climate Change, Pathogens, 9, 8, 2020, 659</a></li>
-            <li><a href="https://nzpps.org/_journal/index.php/nzpp/article/view/5601" target="_blank">Predicting the potential global distribution of Pseudomonas syringae pv. actinidiae (Psa), New Zealand Plant Protection, 66, 184-193, 2013</a></li>
-            <li><a href="https://doi.org/10.1016/j.apsoil.2015.11.015" target="_blank">Corky root severity, root knot nematode galling and microbial communities in soil, rhizosphere and rhizoplane in organic and conventional greenhouse compartments. Applied Soil Ecology, 100, 112-123</a></li>
-            <li><a href="https://doi.org/10.3390/cli10020014" target="_blank">The Potential Global Climate Suitability of Kiwifruit Bacterial Canker Disease (Pseudomonas syringae pv. actinidiae (Psa)) Using Three Modelling Approaches...</a></li>
-            
-        </ul>
-    </div>
+        function App() {
+            const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 Hossein Narouei Khandan | All rights reserved</p>
-    </footer>
+            return (
+                <div className="min-h-screen">
+                    {/* Header Section */}
+                    <header className="bg-header h-96 flex items-center justify-center text-white text-center relative">
+                        <div className="z-10">
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight animate-slide-up">Hossein Narouei Khandan</h1>
+                            <p className="mt-4 text-xl md:text-2xl font-light">Pioneering Research in Biological Systems Modeling</p>
+                            <button
+                                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                                className="md:hidden mt-4 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300"
+                            >
+                                {isSidebarOpen ? 'Close Menu' : 'Open Menu'}
+                            </button>
+                        </div>
+                    </header>
 
+                    {/* Sidebar Navigation */}
+                    <nav className={`fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-6 z-30 sidebar ${isSidebarOpen ? '' : 'hidden'} md:block md:sticky md:top-4 md:h-auto md:bg-transparent md:shadow-none md:p-0 md:ml-4`}>
+                        <div className="md:bg-white md:rounded-xl md:shadow-lg md:p-6">
+                            <h2 className="text-xl font-bold mb-4 text-white md:text-blue-800">Navigation</h2>
+                            <NavLink href="index.html">Home</NavLink>
+                            <NavLink href="hobbies_interests.html">Coding Adventures & Music</NavLink>
+                            <NavLink href="Hossein_Narouei_Khandan_CV.pdf" target="_blank">Download my CV</NavLink>
+                            <NavLink href="Contact.html">Contact Me</NavLink>
+                        </div>
+                    </nav>
+
+                    {/* Main Content */}
+                    <div className="container mx-auto max-w-4xl px-4 md:px-8 py-12 md:ml-72">
+                        <CollapsibleSection title="Research Overview">
+                            <p>
+                                My research is primarily focused on understanding the complex interactions between biological systems and environmental factors through quantitative modeling. I specialize in plant and animal disease epidemiology, spatial analysis, and ecological modeling. By leveraging advanced modeling techniques, my work aims to predict and mitigate the impact of diseases and environmental changes on ecosystems.
+                            </p>
+                        </CollapsibleSection>
+
+                        <CollapsibleSection title="Plant Disease Epidemiology">
+                            <p>
+                                I investigate the spread and control of plant diseases using simulation models that incorporate climatic variables, host-pathogen interactions, and landscape features. I develop tools that could help students, farmers, and policymakers make informed decisions to protect crops from emerging threats. Have a look at my recent app called 
+                                <a href="https://epiplant.up.railway.app/" target="_blank" className="text-blue-500 hover:underline">EpiPlant</a> in the Coding Adventures page.
+                            </p>
+                        </CollapsibleSection>
+
+                        <CollapsibleSection title="Spatial and Ecological Modeling">
+                            <p>
+                                I apply spatial modeling techniques to study the distribution and behavior of species in response to environmental changes. My research includes modeling species distributions under current and future climate scenarios, with an emphasis on conservation planning and biodiversity management.
+                            </p>
+                        </CollapsibleSection>
+
+                        <CollapsibleSection title="Animal Disease Modeling">
+                            <p>
+                                My work in animal disease modeling includes a significant focus on the transmission dynamics of zoonotic diseases. During my tenure as a Data Analyst in the M. bovis eradication program at the Ministry for Primary Industries, New Zealand, I contributed to the development and implementation of advanced statistical models to track and predict the spread of Mycoplasma bovis among cattle populations. By analyzing large datasets, I assessed the risks associated with different transmission pathways and identified potential hotspots for outbreaks. This work was critical in informing disease management strategies, optimizing surveillance efforts, and supporting decision-making processes aimed at eradicating M. bovis from New Zealand. My expertise in data modeling and analysis played a pivotal role in guiding biosecurity measures and minimizing the impact of this disease on the livestock industry.
+                            </p>
+                        </CollapsibleSection>
+
+                        <CollapsibleSection title="Collaborations">
+                            <p>
+                                I actively collaborate with researchers, institutions, and industry partners to enhance the practical application of my research. These partnerships are essential for translating scientific insights into real-world solutions that benefit both human and environmental health.
+                            </p>
+                        </CollapsibleSection>
+
+                        <div className="card bg-white rounded-xl p-8 shadow-lg">
+                            <h2 className="text-3xl font-bold text-blue-800 text-center mb-6">Publications</h2>
+                            <ul className="list-none">
+                                <PublicationItem href="https://doi.org/10.1007/s10658-015-0804-7">
+                                    Global climate suitability of citrus huanglongbing and its vector...
+                                </PublicationItem>
+                                <PublicationItem href="https://doi.org/10.1007/s10658-016-0921-y">
+                                    First occurrence of Diaphorina citri in East Africa, characterization of the Ca. Liberibacter species causing Huanglongbing (HLB) in Tanzania...
+                                </PublicationItem>
+                                <PublicationItem href="https://doi.org/10.1016/j.cropro.2016.08.025">
+                                    Effects and side effects of penicillin injection in Huanglongbing affected grapefruit trees. Crop Protection. 90: 106-116
+                                </PublicationItem>
+                                <PublicationItem href="https://doi.org/10.1111/1365-2664.13455">
+                                    Predicting the fundamental thermal niche of crop pests and diseases in a changing world: A case study on citrus greening, Journal of Applied Ecology, 2019
+                                </PublicationItem>
+                                <PublicationItem href="https://doi.org/10.1111/ppa.13111">
+                                    Projecting the suitability of global and local habitats for myrtle rust (Austropuccinia psidii) using model consensus, Plant Pathology, 2019
+                                </PublicationItem>
+                                <PublicationItem href="https://doi.org/10.1007/s10658-017-1146-4">
+                                    Potential global and regional geographic distribution of Phomopsis vaccinii on Vaccinium species projected by two species distribution models, Euro J of Plant Pathology, 4, 919-930, 2017
+                                </PublicationItem>
+                                <PublicationItem href="https://doi.org/10.1111/ppa.12637">
+                                    Local and regional spread of banana Xanthomonas wilt (BXW) in space and over time in Kagera, Tanzania, Plant Pathology, 2017
+                                </PublicationItem>
+                                <PublicationItem href="https://doi.org/10.3390/pathogens9080659">
+                                    BLIGHTSIM: A New Potato Late Blight Model Simulating the Response of Phytophthora infestans to Diurnal Temperature and Humidity Fluctuations in Relation to Climate Change, Pathogens, 9, 8, 2020, 659
+                                </PublicationItem>
+                                <PublicationItem href="https://nzpps.org/_journal/index.php/nzpp/article/view/5601">
+                                    Predicting the potential global distribution of Pseudomonas syringae pv. actinidiae (Psa), New Zealand Plant Protection, 66, 184-193, 2013
+                                </PublicationItem>
+                                <PublicationItem href="https://doi.org/10.1016/j.apsoil.2015.11.015">
+                                    Corky root severity, root knot nematode galling and microbial communities in soil, rhizosphere and rhizoplane in organic and conventional greenhouse compartments. Applied Soil Ecology, 100, 112-123
+                                </PublicationItem>
+                                <PublicationItem href="https://doi.org/10.3390/cli10020014">
+                                    The Potential Global Climate Suitability of Kiwifruit Bacterial Canker Disease (Pseudomonas syringae pv. actinidiae (Psa)) Using Three Modelling Approaches...
+                                </PublicationItem>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* Footer */}
+                    <footer className="bg-gray-900 text-white text-center py-8">
+                        <p className="text-lg">© 2025 Hossein Narouei Khandan | All rights reserved</p>
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
 </body>
 </html>
