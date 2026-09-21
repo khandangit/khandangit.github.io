@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Loan Deposit Ladder</title>
+<style>body{font-family:system-ui,-apple-system,sans-serif;margin:0;padding:2rem;background:#eef3f3;color:#142323}main{max-width:42rem;margin:12vh auto;background:#fff;padding:2rem;border:1px solid #ccd8d8;border-radius:8px}p{line-height:1.55}.err{color:#8d2424}</style>
+</head>
+<body><main id="loading"><h1>Home Loan Deposit Ladder</h1><p>Loading calculator…</p></main>
+<script>
+(async()=>{
+try{
+if(!('DecompressionStream' in window)) throw new Error('Browser gzip support unavailable.');
+const files=['c01.bin','c02.bin','c03.bin','c04.bin','c05.bin','c06.bin','c07.bin','c08.bin','c09.bin','c10.bin','c11.bin'];
+const arrays=await Promise.all(files.map(f=>fetch('assets/'+f,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(f+' '+r.status);return r.arrayBuffer();}).then(b=>new Uint8Array(b))));
+const total=arrays.reduce((n,a)=>n+a.length,0),packed=new Uint8Array(total);let offset=0;for(const a of arrays){packed.set(a,offset);offset+=a.length;}
+const stream=new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'));
+const html=await new Response(stream).text();document.open();document.write(html);document.close();
+}catch(e){document.getElementById('loading').innerHTML='<h1>Home Loan Deposit Ladder</h1><p class="err">The calculator could not be loaded. Please refresh the page.</p>';console.error(e);}
+})();
+</script></body></html>
