@@ -10,7 +10,7 @@
           blurb:"Life-of-loan discount. Online applications only. No offset; excludes internal Westpac Group refinances.",
           tiers:[{max:70,rate:5.99,comp:6.00},{max:80,rate:6.09,comp:6.10},{max:95,rate:6.84,comp:6.85}] }
       ],
-      lowDeposit:"Lends to 95% LVR, but the Flexi First rate jumps straight from 6.09% to 6.84% the moment you cross 80% — one step, no 85% or 90% landing. That is the steepest cliff of the six. Westpac is a participating lender for the Australian Government 5% Deposit Scheme, which removes LMI but not the rate step."
+      lowDeposit:"Lends to 95% LVR, but the Flexi First rate jumps straight from 6.09% to 6.84% the moment you cross 80% — one step, no 85% or 90% landing. That remains one of the steepest 80% LVR cliffs in this comparison. Westpac is a participating lender for the Australian Government 5% Deposit Scheme, which removes LMI but not the rate step."
     },
     {
       id:"macquarie", name:"Macquarie", asOf:"8 Sep 2026",
@@ -25,16 +25,25 @@
           blurb:"Fixed for 3 years, then reverts to the variable rate then applying. Extra repayments capped at $10,000 a year.",
           tiers:[{max:70,rate:6.39,comp:6.16},{max:80,rate:6.44,comp:6.21},{max:95,rate:6.74,comp:7.01}] }
       ],
-      lowDeposit:"The only lender of the six with a genuine 90% landing that stays under 6.30%: 6.09% at 80% becomes 6.29% at 90% — a 20 basis-point step, then a hard 80 bp jump to 7.09% in the 90–95% band. If your deposit lands between 10% and 20%, Macquarie is usually the sharpest of these six. Broker-originated for most files; not a 5% Deposit Scheme participant."
+      lowDeposit:"Macquarie's Basic Home Loan moves from 6.09% at 80% to 6.29% at 90% — a 20 basis-point step — then jumps 80 bp to 7.09% in the 90–95% band. ING now also publishes a 20 bp 80-to-90% step and is slightly lower at 90% on the advertised rates used here. Macquarie is broker-originated for most files and is not a 5% Deposit Scheme participant."
     },
     {
-      id:"ing", name:"ING", asOf:"17 Sep 2026",
+      id:"ing", name:"ING", asOf:"22 Sep 2026",
       products:[
-        { id:"simplifier", name:"Mortgage Simplifier", annualFee:0, upfrontFee:0,
-          blurb:"No monthly or annual fees, unlimited extra repayments, free redraw. No offset. $150,000 minimum loan.",
-          tiers:[{max:70,rate:5.99,comp:6.02},{max:80,rate:6.04,comp:6.07}] }
+        { id:"simplifier", name:"Mortgage Simplifier", annualFee:0, upfrontFee:350,
+          blurb:"No monthly or annual fees, unlimited extra repayments and redraw. No offset. $150,000 minimum total borrowings; $350 settlement fee.",
+          tiers:[{max:60,rate:5.99,comp:6.02},{max:70,rate:5.99,comp:6.02},{max:80,rate:6.04,comp:6.07},{max:90,rate:6.24,comp:6.27},{max:95,rate:6.69,comp:6.72}] }
       ],
-      lowDeposit:"Simplifier pricing is published only to 80% LVR — above that there is no advertised tier to compare, so this tool shows it as unavailable rather than guessing. ING does lend above 80% on other products; you would have to ask for a quote. Digital-only, no branches, $150,000 minimum loan."
+      lowDeposit:"Mortgage Simplifier is published through 95% LVR. The 80% rate of 6.04% becomes 6.24% in the 80.01–90% band (+20 bp), then 6.69% in the 90.01–95% band. LMI may still apply above 80% unless a waiver or government scheme applies. The advertised variable rates are for new property and new borrowings with ING."
+    },
+    {
+      id:"me", name:"ME Bank", asOf:"11 Sep 2026",
+      products:[
+        { id:"econome", name:"EconoME Home Loan", annualFee:0, upfrontFee:150,
+          blurb:"No annual fee, unlimited additional repayments on variable loans, redraw of extra repayments, and a $150 settlement fee. Advertised P&I rates below are for total borrowings of $150,000 or more.",
+          tiers:[{max:60,rate:5.99,comp:6.01},{max:70,rate:5.99,comp:6.01},{max:80,rate:6.04,comp:6.06},{max:90,rate:6.34,comp:6.36},{max:95,rate:7.04,comp:7.06}] }
+      ],
+      lowDeposit:"EconoME publishes a 30 bp step from 6.04% at 80% LVR to 6.34% at 90%, then a larger 70 bp step to 7.04% in the 90.01–95% band. The product page states a maximum LVR of up to 95%. Rates are for new owner-occupier principal-and-interest lending and remain subject to ME's credit approval and valuation."
     },
     {
       id:"cba", name:"CommBank", asOf:"15 May 2026",
@@ -73,7 +82,7 @@
           blurb:"Rate individually negotiated. Shown at the ceiling of NAB's published range for a 30%+ deposit — an upper bound, not a quote.",
           tiers:[{max:70,rate:6.79,comp:6.92}] }
       ],
-      lowDeposit:"NAB is the outlier: the Base Variable Rate is a single published rate with no LVR tiering at all, so crossing 80% leaves your interest rate unchanged — only LMI applies. NAB lends to 95% LVR on owner-occupier principal-and-interest. The trade-off is that 6.44% is the highest starting point of the six, so NAB wins on a small deposit and loses on a large one. NAB has quoted Tailored rates from around 6.09% at 60% LVR in third-party comparisons, but that is negotiated pricing, not a published tier."
+      lowDeposit:"NAB is the outlier: the Base Variable Rate is a single published rate with no LVR tiering at all, so crossing 80% leaves your interest rate unchanged — only LMI applies. NAB lends to 95% LVR on owner-occupier principal-and-interest. The trade-off is that 6.44% is the highest starting point of these seven published comparisons, so NAB wins on a small deposit and loses on a large one. NAB has quoted Tailored rates from around 6.09% at 60% LVR in third-party comparisons, but that is negotiated pricing, not a published tier."
     }
   ];
 

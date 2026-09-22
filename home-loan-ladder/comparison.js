@@ -55,7 +55,7 @@
 
       html += '<p>Ranked this way the order is <strong>' + (sameOrder ? 'the same as ranking by rate' : 'different from ranking by rate') + '</strong> on your numbers, and it is worth seeing why. '
         + 'Over ' + win + ' years the leading lender pays about <strong>' + money(cheap.ev[key] - cheap.ev.annualFee*win - cheap.ev.upfrontFee - cheap.ev.lmi)
-        + '</strong> in interest, while the largest fee load among these six is <strong>' + money(feeSpread) + '</strong> across five years. '
+        + '</strong> in interest, while the largest fee load among these lenders is <strong>' + money(feeSpread) + '</strong> across five years. '
         + 'Fees are roughly two orders of magnitude smaller than interest at this loan size, so they shade the total without ever overturning a rate gap. '
         + 'That is a real result rather than a quirk: at ' + money(s.baseLoan) + ' borrowed, chasing a $395 package fee is not where the money is — '
         + 'ten basis points on the rate is worth more than the fee, every year.</p>';
@@ -70,7 +70,7 @@
         + 'Rows marked <code>INDICATIVE</code> are negotiated pricing shown at the ceiling of a published range.</p>';
       note.innerHTML = html;
     } else {
-      note.innerHTML = '<p>Only one of the six publishes a tier at this LVR. Above 90% the published market thins out sharply and pricing moves to negotiation.</p>';
+      note.innerHTML = '<p>Only one lender in this comparison publishes a tier at this LVR. Above 90% the published market thins out sharply and pricing moves to negotiation.</p>';
     }
   }
 
@@ -97,7 +97,7 @@
       + money(s.baseLoan*l90/100) + ') at a 10% deposit and <strong>' + l95.toFixed(2) + '%</strong> (' + money(s.baseLoan*l95/100)
       + ') at a 5% deposit. It is a one-off, usually capitalised, and it insures the lender rather than you. The premium is not linear — it roughly doubles between the 86–90% and 91–95% bands.</p>');
 
-    lines.push('<p><strong>3. The product menu shrinks.</strong> CommBank’s Digi Home Loan stops at 80% LVR, so its sharpest rate is unavailable below a 20% deposit. ING publishes no tier above 80% at all. ANZ Simplicity PLUS stops at 90%. Westpac, NAB, CommBank’s other products and Macquarie will go to 95%.</p>');
+    lines.push('<p><strong>3. The product menu shrinks.</strong> CommBank’s Digi Home Loan stops at 80% LVR, so its sharpest rate is unavailable below a 20% deposit. ING Mortgage Simplifier now publishes tiers through 95% LVR. ANZ Simplicity PLUS stops at 90%. ME Bank EconoME, Westpac, NAB, CommBank’s other products and Macquarie publish rates through 95% in the rate cards used here.</p>');
 
     var d20 = s.price*0.20, dutyNow = s.duty.duty;
     lines.push('<p><strong>Stamp duty competes with the deposit for the same cash.</strong> On a ' + money(s.price) + ' purchase in '

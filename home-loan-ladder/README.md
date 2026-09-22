@@ -13,11 +13,11 @@ A browser-based calculator for comparing Australian owner-occupier principal-and
 - `duty.js` — state and territory stamp-duty and first-home-buyer rules used by the calculator.
 - `core.js` — calculations, state handling, loan repayments, LMI and serviceability helpers.
 - `render.js` — lender cards, selected-product details, settlement ledger and serviceability output.
-- `comparison.js` — six-lender comparison table and 20% deposit/LVR-cliff analysis.
+- `comparison.js` — seven-lender comparison table and 20% deposit/LVR-cliff analysis.
 - `init.js` — UI event bindings and initial render.
 
 ## Maintenance
 
 Rates and government rules are time-sensitive. A weekly Home Loan Rate Watch checks official lender and government sources and should update this project only when a documented value or rule changes. Ambiguous changes should be reported rather than guessed.
 
-The figures are candidate estimates, not lending quotes or financial advice.
+The figures are candidate estimates, not lending quotes or financial advice. ING Mortgage Simplifier and ME Bank EconoME are included using their published owner-occupier principal-and-interest LVR tiers.
