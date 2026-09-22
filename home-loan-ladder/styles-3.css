@@ -1,0 +1,27 @@
+input[type="range"]::-moz-range-track{height:4px;background:var(--surface-3);border-radius:2px}
+  input[type="range"]::-webkit-slider-thumb{appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);border:2px solid var(--surface);margin-top:-6px}
+  input[type="range"]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--accent);border:2px solid var(--surface)}
+  .checkline{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--ink-2)}
+  .checkline input{margin:2px 0 0;accent-color:var(--accent);flex:none}
+
+  .seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:3px;overflow:hidden;flex:none}
+  .seg button{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:var(--surface-2);color:var(--ink-2);border:none;padding:5px 9px;cursor:pointer;white-space:nowrap}
+  .seg button + button{border-left:1px solid var(--line-strong)}
+  .seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+
+  .lenders{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px}
+  .lender{text-align:left;background:var(--surface-2);border:1px solid var(--line-strong);border-radius:3px;padding:11px 12px;cursor:pointer;color:var(--ink);display:grid;gap:3px;font-family:var(--sans);transition:border-color .12s,background .12s}
+  .lender:hover{border-color:var(--accent)}
+  .lender[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+  .lender .lname{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.012em}
+  .lender .lrate{font-family:var(--mono);font-size:19px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.15}
+  .lender[aria-pressed="true"] .lrate{color:var(--accent-ink)}
+  .lender .lmeta{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--ink-3);text-transform:uppercase}
+  .lender.na{opacity:.62}
+  .lender.na .lrate{color:var(--ink-3)}
+
+  .verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(142px,1fr));border-top:1px solid var(--line)}
+  .vcell{padding:14px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+  .vcell:last-child{border-right:none}
+  .vlabel{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin-bottom:5px}
+  .vnum{font-family:var(--mono);font-size:23px;font-weight:600;line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:-.02em}

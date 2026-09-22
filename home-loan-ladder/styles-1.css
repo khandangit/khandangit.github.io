@@ -1,0 +1,63 @@
+:root{ padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body{ margin:0; }
+  img{ max-width:100%; }
+  [hidden]{ display:none !important; }
+
+
+
+  :root{
+    --bg:#EBF0F0;
+    --surface:#FFFFFF;
+    --surface-2:#F4F8F8;
+    --surface-3:#E4EDED;
+    --ink:#0F1F1E;
+    --ink-2:#4C6060;
+    --ink-3:#7B8E8E;
+    --line:#D0DDDD;
+    --line-strong:#B3C6C6;
+    --accent:#0F5563;
+    --accent-ink:#0B3D48;
+    --accent-soft:#DAEAEE;
+    --good:#1E6B4E;
+    --good-soft:#DCEDE4;
+    --warn:#95590C;
+    --warn-soft:#F6E7D2;
+    --crit:#9A2B2B;
+    --crit-soft:#F5DEDE;
+    --shadow:0 1px 2px rgba(15,31,30,.05), 0 8px 24px -16px rgba(15,31,30,.25);
+    --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans:'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --display:'Archivo', 'IBM Plex Sans', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0B1415; --surface:#121F21; --surface-2:#17282B; --surface-3:#1E3336;
+      --ink:#E4EDEC; --ink-2:#97ACAC; --ink-3:#6F8586;
+      --line:#22383B; --line-strong:#325054;
+      --accent:#4EBDD2; --accent-ink:#8FD9E6; --accent-soft:#12333B;
+      --good:#4FBF8B; --good-soft:#12301F;
+      --warn:#E0A54A; --warn-soft:#332410;
+      --crit:#E87878; --crit-soft:#3A1B1B;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0B1415; --surface:#121F21; --surface-2:#17282B; --surface-3:#1E3336;
+    --ink:#E4EDEC; --ink-2:#97ACAC; --ink-3:#6F8586;
+    --line:#22383B; --line-strong:#325054;
+    --accent:#4EBDD2; --accent-ink:#8FD9E6; --accent-soft:#12333B;
+    --good:#4FBF8B; --good-soft:#12301F;
+    --warn:#E0A54A; --warn-soft:#332410;
+    --crit:#E87878; --crit-soft:#3A1B1B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1200px;margin-inline:auto;padding-inline:20px;padding-block:30px 72px}
+  @media (max-width:520px){ .wrap{padding-inline:16px;padding-block:22px 56px} }
+
+  .mast{border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:26px}
+  .kicker{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+  .kicker .dot{color:var(--ink-3)}
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.04;letter-spacing:-.022em;margin:10px 0 8px;text-wrap:balance}

@@ -2,20 +2,266 @@
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Compare owner-occupier home loan rates across six Australian lenders by LVR tier, with stamp duty by state and serviceability.">
+<meta name="color-scheme" content="light dark">
 <title>Home Loan Deposit Ladder</title>
-<style>body{font-family:system-ui,-apple-system,sans-serif;margin:0;padding:2rem;background:#eef3f3;color:#142323}main{max-width:42rem;margin:12vh auto;background:#fff;padding:2rem;border:1px solid #ccd8d8;border-radius:8px}p{line-height:1.55}.err{color:#8d2424}</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body><main id="loading"><h1>Home Loan Deposit Ladder</h1><p>Loading calculator…</p></main>
-<script>
-(async()=>{
-try{
-if(!('DecompressionStream' in window)) throw new Error('Browser gzip support unavailable.');
-const files=['c01.bin','c02.bin','c03.bin','c04.bin','c05.bin','c06.bin','c07.bin','c08.bin','c09.bin','c10.bin','c11.bin'];
-const arrays=await Promise.all(files.map(f=>fetch('assets/'+f,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(f+' '+r.status);return r.arrayBuffer();}).then(b=>new Uint8Array(b))));
-const total=arrays.reduce((n,a)=>n+a.length,0),packed=new Uint8Array(total);let offset=0;for(const a of arrays){packed.set(a,offset);offset+=a.length;}
-const stream=new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'));
-const html=await new Response(stream).text();document.open();document.write(html);document.close();
-}catch(e){document.getElementById('loading').innerHTML='<h1>Home Loan Deposit Ladder</h1><p class="err">The calculator could not be loaded. Please refresh the page.</p>';console.error(e);}
-})();
-</script></body></html>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <div class="kicker">
+      <span>Owner-occupier &middot; Principal &amp; interest</span>
+      <span class="dot">&bull;</span>
+      <span>Variable unless marked fixed</span>
+      <span class="dot">&bull;</span>
+      <span>Rates 8&ndash;21 Sep 2026</span>
+      <span class="dot">&bull;</span>
+      <span>Candidate estimate &mdash; not credit advice</span>
+    </div>
+    <h1>Home Loan Deposit Ladder</h1>
+    <p class="standfirst">Pick a lender, set your deposit, and see the rate tier that actually applies &mdash; with stamp duty for your state and what changes the moment you drop below a 20% deposit. Opens with <b>example figures</b>; replace them with yours.</p>
+  </header>
+
+  <div class="layout">
+
+    <!-- ============ INPUTS ============ -->
+    <div>
+      <section class="panel">
+        <div class="panel-hd"><h2>Your numbers</h2><span class="note" id="lvrTag">LVR &mdash;</span></div>
+        <div class="panel-bd">
+
+          <div class="fieldset">
+            <div class="row2">
+              <div class="field">
+                <label for="price">Property value</label>
+                <div class="ctl has-pre"><span class="pre">$</span><input type="number" id="price" value="850000" min="50000" step="5000"></div>
+              </div>
+              <div class="field">
+                <label for="state">State</label>
+                <select id="state">
+                  <option value="QLD" selected>Queensland</option>
+                  <option value="NSW">New South Wales</option>
+                  <option value="VIC">Victoria</option>
+                  <option value="SA">South Australia</option>
+                  <option value="WA">Western Australia</option>
+                  <option value="TAS">Tasmania</option>
+                  <option value="ACT">ACT</option>
+                  <option value="NT">Northern Territory</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="lblrow">
+                <span class="lbl" id="cashLabel">Cash you have</span>
+                <div class="seg" id="cashSeg">
+                  <button type="button" data-mode="savings" aria-pressed="true">Total savings</button>
+                  <button type="button" data-mode="deposit" aria-pressed="false">Deposit only</button>
+                </div>
+              </div>
+              <div class="ctl has-pre"><span class="pre">$</span><input type="number" id="cash" value="120000" min="0" step="1000"></div>
+              <input type="range" id="cashPct" min="2" max="45" step="0.5" value="14.1" aria-label="Cash as a percentage of property value">
+              <div class="hint" id="cashHint">&mdash;</div>
+            </div>
+
+            <div class="row2">
+              <div class="field">
+                <label for="otherCosts">Other settlement costs</label>
+                <div class="ctl has-pre"><span class="pre">$</span><input type="number" id="otherCosts" value="3000" min="0" step="250"></div>
+                <div class="hint">conveyancing, searches, registration, building &amp; pest &mdash; edit to your quotes</div>
+              </div>
+              <div class="field">
+                <label for="term">Loan term</label>
+                <div class="ctl has-post"><span class="post">yrs</span><input type="number" id="term" value="30" min="5" max="30" step="1"></div>
+                <div class="field" style="margin-top:9px">
+                  <label for="freq">Repayments</label>
+                  <select id="freq">
+                    <option value="12" selected>Monthly</option>
+                    <option value="26">Fortnightly</option>
+                    <option value="52">Weekly</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <label class="checkline"><input type="checkbox" id="fhb"> First home buyer &mdash; apply this state&rsquo;s duty concession</label>
+          </div>
+
+          <div class="sub-hd">Income &amp; commitments</div>
+          <div class="fieldset">
+            <div class="row2">
+              <div class="field">
+                <label for="inc1">Salary 1 (gross p.a.)</label>
+                <div class="ctl has-pre"><span class="pre">$</span><input type="number" id="inc1" value="145000" min="0" step="1000"></div>
+              </div>
+              <div class="field">
+                <label for="inc2">Salary 2 (gross p.a.)</label>
+                <div class="ctl has-pre"><span class="pre">$</span><input type="number" id="inc2" value="95000" min="0" step="1000"></div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="incOther">Other taxable income (p.a.)</label>
+              <div class="ctl has-pre"><span class="pre">$</span><input type="number" id="incOther" value="0" min="0" step="500"></div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="expenses">Living expenses</label>
+                <div class="ctl has-pre"><span class="pre">$</span><input type="number" id="expenses" value="4200" min="0" step="100"></div>
+                <div class="hint">per month, excl. rent &amp; this loan</div>
+              </div>
+              <div class="field">
+                <label for="deps">Dependants</label>
+                <div class="ctl"><input type="number" id="deps" value="0" min="0" max="8" step="1"></div>
+                <div class="hint" id="hemHint">&mdash;</div>
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="otherDebt">Other loan repayments</label>
+                <div class="ctl has-pre"><span class="pre">$</span><input type="number" id="otherDebt" value="0" min="0" step="50"></div>
+                <div class="hint">per month (car, personal, HECS)</div>
+              </div>
+              <div class="field">
+                <label for="cardLimit">Credit card limits</label>
+                <div class="ctl has-pre"><span class="pre">$</span><input type="number" id="cardLimit" value="0" min="0" step="1000"></div>
+                <div class="hint">total limit, not balance</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sub-hd">Assessment assumptions</div>
+          <div class="fieldset">
+            <div class="row2">
+              <div class="field">
+                <label for="buffer">Serviceability buffer</label>
+                <div class="ctl has-post"><span class="post">pp</span><input type="number" id="buffer" value="3.00" min="0" max="6" step="0.25"></div>
+                <div class="hint">APRA minimum is 3.00</div>
+              </div>
+              <div class="field">
+                <label for="floorRate">Assessment floor</label>
+                <div class="ctl has-post"><span class="post">%</span><input type="number" id="floorRate" value="5.00" min="0" max="12" step="0.25"></div>
+                <div class="hint">rarely binds at today&rsquo;s rates</div>
+              </div>
+            </div>
+            <label class="checkline"><input type="checkbox" id="capLmi" checked> Capitalise LMI into the loan rather than paying it at settlement</label>
+            <label class="checkline"><input type="checkbox" id="scheme"> Using the Australian Government 5% Deposit Scheme, so no LMI is payable</label>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ RESULTS ============ -->
+    <div>
+
+      <section class="panel">
+        <div class="panel-hd"><h2>Choose a lender</h2><span class="note">Rate shown is the tier at your LVR</span></div>
+        <div class="panel-bd">
+          <div class="lenders" id="lenderList" role="group" aria-label="Lender"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-hd"><h2 id="selHd">Selected lender</h2><span class="note" id="selAsOf">&mdash;</span></div>
+        <div class="panel-bd">
+          <div class="field" style="margin-bottom:16px">
+            <label for="product">Product</label>
+            <select id="product"></select>
+            <div class="hint" id="productBlurb">&mdash;</div>
+          </div>
+
+          <div class="sub-hd" style="margin-top:0" id="ladderHd">Rate by LVR tier</div>
+          <div class="ladder" id="ladder"></div>
+
+          <div id="lowDepositBox" style="margin-top:18px"></div>
+        </div>
+        <div class="verdict" id="verdict"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-hd"><h2>Cash to settle</h2><span class="note" id="dutyTag">&mdash;</span></div>
+        <div class="panel-bd">
+          <div class="ledger" id="ledger"></div>
+          <div class="prose" id="dutyNote" style="margin-top:16px"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-hd"><h2>Can you service it?</h2><span class="note" id="assessTag">&mdash;</span></div>
+        <div class="panel-bd">
+          <div id="serviceBox"></div>
+          <dl class="deflist" id="serviceDetail" style="margin-top:16px"></dl>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-hd">
+          <h2>All six, at your deposit</h2>
+          <div class="seg" id="sortSeg">
+            <span class="lbl" style="font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding:5px 9px;background:var(--surface-3)">Cost over</span>
+            <button type="button" data-horizon="5" aria-pressed="true">First 5 years</button>
+            <button type="button" data-horizon="full" aria-pressed="false">Full term</button>
+          </div>
+        </div>
+        <div class="tscroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Lender / cheapest product at this LVR</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Comp.</th>
+                <th scope="col">Repayment</th>
+                <th scope="col">Fees</th>
+                <th scope="col" id="costHd">Cost of credit</th>
+                <th scope="col">Max LVR</th>
+              </tr>
+            </thead>
+            <tbody id="cmpBody"></tbody>
+          </table>
+        </div>
+        <div class="panel-bd" style="border-top:1px solid var(--line)">
+          <div class="prose" id="cmpNote"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-hd"><h2>What the 20% line actually costs</h2></div>
+        <div class="panel-bd"><div class="prose" id="cliffProse"></div></div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="foot">
+    <h3>Where the numbers come from</h3>
+    <ul class="srcgrid">
+      <li><b>CommBank</b> rate card effective 15 May 2026</li>
+      <li><b>ANZ</b> Simplicity PLUS offer, eff. 15 May 2026</li>
+      <li><b>NAB</b> published rates, 21 Sep 2026</li>
+      <li><b>Westpac</b> Flexi First Online Offer, 21 Sep 2026</li>
+      <li><b>Macquarie</b> rate card as at 8 Sep 2026</li>
+      <li><b>ING</b> Mortgage Simplifier, 17 Sep 2026</li>
+      <li><b>Tax</b> ATO resident rates 2026&ndash;27</li>
+      <li><b>LMI</b> indicative full-doc premium bands</li>
+      <li><b>Duty</b> state revenue office scales</li>
+      <li><b>Scheme caps</b> Housing Australia, from 1 Oct 2025</li>
+    </ul>
+    <p><strong>Read every figure here as a candidate estimate, not a quote.</strong> Advertised tier rates are the starting point lenders publish; the rate in a letter of offer is set after credit assessment and is frequently negotiated below the advertised tier, particularly on the packaged products. LMI premiums are modelled from published indicative bands and vary by insurer, lender, loan purpose and borrower profile &mdash; treat them as an order of magnitude. Serviceability uses a single buffer on the product rate and a crude living-expense floor; real assessment applies each lender&rsquo;s own expense benchmark, income shading and commitment treatment, so a lender&rsquo;s answer will differ.</p>
+    <p><strong>On stamp duty.</strong> The base duty scales were checked against an independent comparison at $500,000, $800,000 and $1,000,000 and reconcile exactly in all eight jurisdictions. Owner-occupier concessions are applied automatically where the state has one (Queensland&rsquo;s home concession, Victoria&rsquo;s principal-place-of-residence scale, the ACT&rsquo;s eligible owner-occupier scale). First-home concessions are exact where the revenue office publishes a formula or table &mdash; Queensland and Western Australia &mdash; and are a straight-line taper elsewhere, flagged in the duty note as an approximation. Foreign-purchaser surcharges, off-the-plan concessions and regional variations are not modelled. Confirm duty with your state revenue office&rsquo;s own calculator before relying on it.</p>
+    <p>Also excluded: offset balances, redraw, cashback and fee-waiver offers, and lenders&rsquo; valuation fees. Fixed-rate products revert to a variable rate at the end of the fixed term and the reversion rate is not modelled, so a fixed row&rsquo;s full-term cost understates the real figure. Investment lending, interest-only repayments and company or trust borrowers are out of scope. Rates and duty scales move &mdash; confirm current numbers before acting. General information only; not financial or credit advice.</p>
+  </footer>
+</div>
+
+<script src="rates.js"></script>
+<script src="duty.js"></script>
+<script src="core.js"></script>
+<script src="render.js"></script>
+<script src="comparison.js"></script>
+<script src="init.js"></script>
+</body>
+</html>
