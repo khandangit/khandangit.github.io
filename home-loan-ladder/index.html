@@ -169,16 +169,7 @@
       <section class="panel">
         <div class="panel-hd"><h2 id="selHd">Selected lender</h2><span class="note" id="selAsOf">&mdash;</span></div>
         <div class="panel-bd">
-          <div class="field" style="margin-bottom:16px">
-            <label for="product">Product</label>
-            <select id="product"></select>
-            <div class="hint" id="productBlurb">&mdash;</div>
-          </div>
-
-          <div class="sub-hd" style="margin-top:0" id="ladderHd">Rate by LVR tier</div>
-          <div class="ladder" id="ladder"></div>
-
-          <div id="lowDepositBox" style="margin-top:18px"></div>
+          <div id="lowDepositBox"></div>
         </div>
         <div class="verdict" id="verdict"></div>
       </section>
@@ -226,6 +217,20 @@
         </div>
         <div class="panel-bd" style="border-top:1px solid var(--line)">
           <div class="prose" id="cmpNote"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-hd"><h2>Selected lender details</h2><span class="note">Product and LVR rate ladder</span></div>
+        <div class="panel-bd">
+          <div class="field" style="margin-bottom:16px">
+            <label for="product">Product</label>
+            <select id="product"></select>
+            <div class="hint" id="productBlurb">&mdash;</div>
+          </div>
+
+          <div class="sub-hd" style="margin-top:0" id="ladderHd">Rate by LVR tier</div>
+          <div class="ladder" id="ladder"></div>
         </div>
       </section>
 
