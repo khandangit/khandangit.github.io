@@ -12,7 +12,15 @@ input[type="range"]::-moz-range-track{height:4px;background:var(--surface-3);bor
   .lenders{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px}
   .lender{text-align:left;background:var(--surface-2);border:1px solid var(--line-strong);border-radius:3px;padding:11px 12px;cursor:pointer;color:var(--ink);display:grid;gap:3px;font-family:var(--sans);transition:border-color .12s,background .12s}
   .lender:hover{border-color:var(--accent)}
-  .lender[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+  .lender.rank-1,.lender.rank-2{background:#DCEDE4;border-color:#79A98C}
+  .lender.rank-1{box-shadow:inset 4px 0 0 #1E6B4E}
+  .lender.rank-2{box-shadow:inset 4px 0 0 #2F7D5D}
+  .lender.rank-rest{background:#EDF6F0;border-color:#B9D7C4}
+  .lender.rank-1 .lrate,.lender.rank-2 .lrate{color:#184F3B}
+  .lender.rank-rest .lrate{color:#285F49}
+  .lender[aria-pressed="true"]{border-color:#0F5563;box-shadow:inset 4px 0 0 #0F5563,0 0 0 1px #0F5563}
+  .lender[aria-pressed="true"].rank-1,.lender[aria-pressed="true"].rank-2{background:#D6EADF}
+  .lender[aria-pressed="true"].rank-rest{background:#E7F3EB}
   .lender .lname{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.012em}
   .lender .lrate{font-family:var(--mono);font-size:19px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.15}
   .lender[aria-pressed="true"] .lrate{color:var(--accent-ink)}

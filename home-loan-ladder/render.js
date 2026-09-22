@@ -20,18 +20,35 @@
   function renderLenders(s){
     var host = $('lenderList');
     host.innerHTML = '';
-    LENDERS.forEach(function(L){
-      var pick = cheapestProduct(L, s, 'rate');
+
+    var ranked = LENDERS.map(function(L){
+      return { lender:L, pick:cheapestProduct(L, s, 'rate') };
+    }).sort(function(a,b){
+      if(a.pick && b.pick) return a.pick.ev.rate - b.pick.ev.rate || a.pick.ev.comp - b.pick.ev.comp || a.lender.name.localeCompare(b.lender.name);
+      if(a.pick) return -1;
+      if(b.pick) return 1;
+      return a.lender.name.localeCompare(b.lender.name);
+    });
+
+    var availableRank = 0;
+    ranked.forEach(function(item){
+      var L = item.lender, pick = item.pick;
+      if(pick) availableRank += 1;
+
       var btn = document.createElement('button');
       btn.type='button';
-      btn.className = 'lender' + (pick ? '' : ' na');
+      var rankClass = !pick ? ' na' : (availableRank===1 ? ' rank-1' : availableRank===2 ? ' rank-2' : ' rank-rest');
+      btn.className = 'lender' + rankClass;
       btn.setAttribute('aria-pressed', L.id===selectedLender ? 'true' : 'false');
       btn.innerHTML = '<span class="lname"></span><span class="lrate"></span><span class="lmeta"></span>';
       btn.querySelector('.lname').textContent = L.name;
       btn.querySelector('.lrate').textContent = pick ? pct(pick.ev.rate) : 'n/a';
+
+      var rankLabel = pick ? (availableRank===1 ? 'LOWEST · ' : availableRank===2 ? '2ND LOWEST · ' : '') : '';
       btn.querySelector('.lmeta').textContent = pick
-        ? 'comp ' + pct(pick.ev.comp) + ' · ' + pick.product.name + (pick.product.fixed ? ' [fixed]' : '')
+        ? rankLabel + 'comp ' + pct(pick.ev.comp) + ' · ' + pick.product.name + (pick.product.fixed ? ' [fixed]' : '')
         : 'no published tier at ' + s.lvr.toFixed(0) + '% LVR';
+
       btn.addEventListener('click', function(){ selectedLender = L.id; selectedProduct = null; render(); });
       host.appendChild(btn);
     });
