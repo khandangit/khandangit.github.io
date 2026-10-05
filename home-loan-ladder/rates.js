@@ -25,7 +25,7 @@
           blurb:"Fixed for 3 years, then reverts to the variable rate then applying. Extra repayments capped at $10,000 a year.",
           tiers:[{max:70,rate:6.39,comp:6.16},{max:80,rate:6.44,comp:6.21},{max:95,rate:6.74,comp:7.01}] }
       ],
-      lowDeposit:"Macquarie's Basic Home Loan moves from 6.09% at 80% to 6.29% at 90% — a 20 basis-point step — then jumps 80 bp to 7.09% in the 90–95% band. ING now also publishes a 20 bp 80-to-90% step and is slightly lower at 90% on the advertised rates used here. Macquarie is broker-originated for most files and is not a 5% Deposit Scheme participant."
+      lowDeposit:"Macquarie's Basic Home Loan moves from 6.09% at 80% to 6.29% at 90% — a 20 basis-point step — then jumps 80 bp to 7.09% in the 90–95% band. ING now publishes a 15 bp 80-to-90% step and is slightly lower at 90% on the advertised rates used here. Macquarie is broker-originated for most files and is not a 5% Deposit Scheme participant."
     },
     {
       id:"ing", name:"ING", asOf:"5 Oct 2026",
