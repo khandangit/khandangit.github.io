@@ -88,9 +88,9 @@
         return 28453 + (v-725000)*0.0515;
       },
       fhb:function(v, base){
-        if(v<=500000) return { duty:0, exact:true, note:"Full exemption under the First Home Owner Rate of duty to $500,000." };
-        if(v<=700000) return { duty:per100(v-500000)*13.63, exact:true, note:"Perth and Peel concessional rate: $13.63 per $100 above $500,000. Regional WA uses $11.89 per $100 to $750,000 — not modelled here, so a regional purchase will be cheaper than shown." };
-        return { duty:base, exact:true, note:"Above $700,000 the metropolitan first home owner rate ends and the general scale applies. Regional Western Australia extends to $750,000." };
+        if(v<=600000) return { duty:0, exact:true, note:"Full exemption under the First Home Owner Rate of duty to $600,000 for transactions entered into on or after 7 May 2026." };
+        if(v<=800000) return { duty:per100(v-600000)*16.15, exact:true, note:"First Home Owner Rate: $16.15 per $100 or part of $100 above $600,000, up to $800,000, for transactions entered into on or after 7 May 2026." };
+        return { duty:base, exact:true, note:"Above $800,000 the First Home Owner Rate does not apply and the general scale is used." };
       },
       note:"Western Australia's separate residential rate only applies below $200,000, so the general scale is used here."
     },
@@ -106,8 +106,7 @@
         return 27810 + per100(v-725000)*4.50;
       },
       fhb:function(v, base){
-        if(v<750000) return { duty:0, exact:false, note:"Tasmania's full first home buyer exemption below $750,000 was legislated to run to 30 June 2026 and was then to be reviewed. That date has passed — confirm with the State Revenue Office whether it still applies before relying on a nil figure." };
-        return { duty:base, exact:true, note:"Above $750,000 no first home exemption applied under the scheme as legislated." };
+        return { duty:base, exact:true, note:"Tasmania's 100% first home buyer duty exemption for established homes ended on 30 June 2026, so the standard duty scale is applied." };
       },
       note:"Tasmania has no separate owner-occupier concession — the standard scale applies."
     },
@@ -123,8 +122,7 @@
         return v*0.0454;
       },
       fhb:function(v, base){
-        if(v<=1020000) return { duty:0, exact:true, note:"Full exemption under the ACT Home Buyer Concession Scheme, which is income-tested — household income must sit under the scheme threshold, so confirm eligibility before assuming nil." };
-        return { duty:base, exact:true, note:"Above $1,020,000 the Home Buyer Concession Scheme does not apply." };
+        return { duty:0, exact:true, note:"From 1 July 2026, eligible buyers under the ACT Home Buyer Concession Scheme pay no conveyance duty regardless of property value; the former income and property-value limits have been removed. Other eligibility requirements still apply." };
       },
       note:"The eligible owner-occupier scale is applied — roughly $2,992 below the investor scale across the mid bands. The ACT also charges annual land tax in place of some duty, which is not modelled."
     },
