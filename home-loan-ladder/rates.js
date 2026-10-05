@@ -28,13 +28,13 @@
       lowDeposit:"Macquarie's Basic Home Loan moves from 6.09% at 80% to 6.29% at 90% — a 20 basis-point step — then jumps 80 bp to 7.09% in the 90–95% band. ING now also publishes a 20 bp 80-to-90% step and is slightly lower at 90% on the advertised rates used here. Macquarie is broker-originated for most files and is not a 5% Deposit Scheme participant."
     },
     {
-      id:"ing", name:"ING", asOf:"22 Sep 2026",
+      id:"ing", name:"ING", asOf:"5 Oct 2026",
       products:[
         { id:"simplifier", name:"Mortgage Simplifier", annualFee:0, upfrontFee:350,
           blurb:"No monthly or annual fees, unlimited extra repayments and redraw. No offset. $150,000 minimum total borrowings; $350 settlement fee.",
-          tiers:[{max:60,rate:5.99,comp:6.02},{max:70,rate:5.99,comp:6.02},{max:80,rate:6.04,comp:6.07},{max:90,rate:6.24,comp:6.27},{max:95,rate:6.69,comp:6.72}] }
+          tiers:[{max:60,rate:6.04,comp:6.07},{max:70,rate:6.04,comp:6.07},{max:80,rate:6.09,comp:6.12},{max:90,rate:6.24,comp:6.27},{max:95,rate:6.69,comp:6.72}] }
       ],
-      lowDeposit:"Mortgage Simplifier is published through 95% LVR. The 80% rate of 6.04% becomes 6.24% in the 80.01–90% band (+20 bp), then 6.69% in the 90.01–95% band. LMI may still apply above 80% unless a waiver or government scheme applies. The advertised variable rates are for new property and new borrowings with ING."
+      lowDeposit:"Mortgage Simplifier is published through 95% LVR. The 80% rate of 6.09% becomes 6.24% in the 80.01–90% band (+15 bp), then 6.69% in the 90.01–95% band. LMI may still apply above 80% unless a waiver or government scheme applies. The advertised variable rates are for new property and new borrowings with ING."
     },
     {
       id:"me", name:"ME Bank", asOf:"11 Sep 2026",
