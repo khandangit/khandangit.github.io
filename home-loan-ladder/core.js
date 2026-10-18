@@ -4,7 +4,7 @@
   var nf0 = new Intl.NumberFormat('en-AU',{maximumFractionDigits:0});
   function fmtMoney(n){ return '$' + nf0.format(Math.max(0,Math.round(n))); }
   var money = fmtMoney;
-  function pct(n){ return n.toFixed(2) + '%'; }
+  function pct(n){ return typeof n==='number' && isFinite(n) ? n.toFixed(2) + '%' : 'not verified'; }
   function num(id){ var v = parseFloat($(id).value); return isFinite(v) ? v : 0; }
 
   function repayment(principal, annualRate, years, perYear){
