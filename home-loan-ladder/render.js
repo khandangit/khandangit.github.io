@@ -49,7 +49,7 @@
         ? rankLabel + 'comp ' + pct(pick.ev.comp) + ' · ' + pick.product.name + (pick.product.fixed ? ' [fixed]' : '')
         : 'no published tier at ' + s.lvr.toFixed(0) + '% LVR';
 
-      btn.addEventListener('click', function(){ selectedLender = L.id; selectedProduct = null; render(); });
+      btn.addEventListener('click', function(){ if(selectedLender!==L.id) $('scheme').checked=false; selectedLender = L.id; selectedProduct = null; render(); });
       host.appendChild(btn);
     });
   }
