@@ -124,15 +124,25 @@
                + money(repayment(s.baseLoan, ev.rate, s.term, 12) - repayment(s.baseLoan, ev.rate80, s.term, 12))
                + ' a month, for the life of the loan unless you refinance or revalue below 80%.</p>';
         } else {
-          html += '<p><span class="big">No rate step</span>' + L.name + ' does not tier this product by LVR, so crossing 80% leaves your interest rate unchanged. LMI still applies.</p>';
+          html += '<p><span class="big">No rate step</span>' + L.name + ' does not tier this product by LVR, so crossing 80% leaves your interest rate unchanged. LMI may still apply unless a confirmed guarantee or waiver applies.</p>';
         }
       }
-      if(s.scheme){
-        html += '<p><strong>LMI waived</strong> under the 5% Deposit Scheme. Queensland caps: $1,000,000 for Brisbane, Gold Coast and Sunshine Coast; $700,000 elsewhere in the state. Income caps were removed on 1 October 2025. Of these six, CommBank and Westpac participate; Macquarie and ING do not.</p>';
-      } else if(ev.available){
-        html += '<p><strong>LMI, estimated:</strong> ' + money(ev.lmi) + ' — about ' + ev.lmiRate.toFixed(2)
-             + '% of the ' + money(s.baseLoan) + ' borrowed. '
-             + (s.capLmi ? 'Capitalised, so you are repaying ' + money(ev.loan) + '.' : 'Payable at settlement, on top of deposit and duty.') + '</p>';
+      if(s.scheme && ev.available){
+        html += '<p><strong>LMI waived in this scenario</strong> only because you have marked the 5% Deposit Scheme loan as approved, the lender participates, the selected area price cap (' + money(s.schemeCapValue) + ') is met and your deposit is at least 5%. The lender must also confirm the valuation, this product and all borrower eligibility criteria. No income caps apply.</p>';
+      } else {
+        if(s.schemeRequested){
+          var reasons = [];
+          if(!s.isFhb) reasons.push('first-home-buyer pathway not selected');
+          if(!schemeLenderParticipates(L.id)) reasons.push('this lender does not participate');
+          if(s.price>s.schemeCapValue) reasons.push('property price exceeds the selected area cap of ' + money(s.schemeCapValue));
+          if(s.deposit<s.price*0.05) reasons.push('deposit is below 5%');
+          html += '<p><strong>Scheme waiver not applied:</strong> ' + (reasons.length ? reasons.join('; ') : 'lender/product approval or eligibility is not established') + '. The single-parent 2% pathway is not modelled. Check the official postcode cap and lender-assessed property value.</p>';
+        }
+        if(ev.available){
+          html += '<p><strong>LMI, estimated:</strong> ' + money(ev.lmi) + ' — about ' + ev.lmiRate.toFixed(2)
+               + '% of the ' + money(s.baseLoan) + ' borrowed. '
+               + (s.capLmi ? 'Capitalised, so you are repaying ' + money(ev.loan) + '.' : 'Payable at settlement, on top of deposit and duty.') + '</p>';
+        }
       }
       html += '<p>' + L.lowDeposit + '</p></div>';
     } else {
