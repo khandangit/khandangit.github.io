@@ -71,9 +71,9 @@
       products:[
         { schemeLender:"anz", id:"simplicity", name:"Simplicity PLUS", annualFee:0, upfrontFee:0,
           blurb:"No setup or ongoing fees, free redraw, no offset. Requires an eligible ANZ everyday or savings account. $50,000 minimum.",
-          tiers:[{max:60,rate:6.64,comp:6.64},{max:70,rate:6.69,comp:6.69},{max:80,rate:6.79,comp:6.79},{max:90,rate:7.34,comp:7.34}] }
+          tiers:[{max:60,rate:6.64,comp:6.64},{max:70,rate:6.69,comp:6.69},{max:80,rate:6.79,comp:6.79},{max:90,rate:7.34,comp:7.34},{max:95,rate:7.89,comp:7.89}] }
       ],
-      lowDeposit:"Simplicity PLUS steps 55 bp at the 80% line — 6.79% to 7.34% — and ANZ publishes no tier above 90%, so a deposit under 10% needs a different ANZ product. ANZ announced a 0.25 percentage-point increase effective 9 October 2026; the rates shown apply that change to previously published discount tiers, which should be confirmed with ANZ before relying on a quote. ANZ's Standard Variable is priced by negotiation with separate discount margins above and below 80% LVR, so it is not modelled here. Worth asking about separately: a $3,000 cashback for eligible first home buyers borrowing $250,000 or more, and an LMI waiver for eligible professionals, which can be worth more than any rate difference on this page."
+      lowDeposit:"Simplicity PLUS steps 55 bp at the 80% line — 6.79% to 7.34% — and increases to 7.89% above 90% LVR (shown through 95% here, subject to lending approval and LMI or scheme eligibility). ANZ announced a 0.25 percentage-point increase effective 9 October 2026; the rates shown apply that change to previously published discount tiers, which should be confirmed with ANZ before relying on a quote. ANZ's Standard Variable is priced by negotiation with separate discount margins above and below 80% LVR, so it is not modelled here. Worth asking about separately: a $3,000 cashback for eligible first home buyers borrowing $250,000 or more, and an LMI waiver for eligible professionals, which can be worth more than any rate difference on this page."
     },
     {
       id:"nab", name:"NAB", asOf:"9 Oct 2026 (Base Variable)",
