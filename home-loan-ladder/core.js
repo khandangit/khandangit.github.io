@@ -58,6 +58,26 @@
     return { duty:r.duty, base:base, exact:r.exact, note:r.note, fhbNote:r.note, concessionName:D.concessionName, baseNote:D.note };
   }
 
+  /* Housing Australia 5% Deposit Scheme caps, effective 1 Oct 2025.
+     "metro" covers capital cities and designated regional centres;
+     NT metro means Darwin. A lender must confirm the postcode and valuation. */
+  function schemePriceCap(state, area){
+    var caps = {
+      NSW:{metro:1500000,other:800000},
+      VIC:{metro:950000,other:650000},
+      QLD:{metro:1000000,other:700000},
+      WA:{metro:850000,other:600000},
+      SA:{metro:900000,other:500000},
+      TAS:{metro:700000,other:550000},
+      ACT:{metro:1000000,other:1000000},
+      NT:{metro:750000,other:600000}
+    };
+    return caps[state] ? caps[state][area==='metro'?'metro':'other'] : 0;
+  }
+  function schemeLenderParticipates(id){
+    return id==='westpac' || id==='cba' || id==='anz' || id==='nab';
+  }
+
   /* ---------- state ---------- */
   var selectedLender = 'macquarie';
   var selectedProduct = null;
@@ -73,7 +93,17 @@
     var otherCosts = num('otherCosts');
     var cash = num('cash');
     var capLmi = $('capLmi').checked;
-    var scheme = $('scheme').checked;
+    var schemeRequested = $('scheme').checked;
+    var schemeArea = $('schemeArea').value;
+    var schemeCapValue = schemePriceCap(stateCode, schemeArea);
+    /* Only the first-home-buyer 5% pathway is modelled. The checkbox
+       explicitly represents lender-approved participation, not a claim
+       of automatic eligibility. Property valuation is lender-confirmed. */
+    var tentativeDeposit = Math.max(0, Math.min(price,
+      cashMode==='deposit' ? cash : cash-duty.duty-otherCosts));
+    var schemeBasic = schemeRequested && isFhb &&
+      price<=schemeCapValue && tentativeDeposit>=price*0.05;
+    var scheme = schemeBasic && schemeLenderParticipates(selectedLender);
 
     var deposit, savings;
     if(cashMode==='deposit'){
@@ -111,14 +141,15 @@
       declaredExp:declaredExp, hem:floor, usedExp:Math.max(declaredExp, floor),
       otherDebt:num('otherDebt'), cardLimit:num('cardLimit'),
       buffer:num('buffer'), floorRate:num('floorRate'),
-      capLmi:capLmi, scheme:scheme
+      capLmi:capLmi, scheme:scheme, schemeRequested:schemeRequested,
+      schemeBasic:schemeBasic, schemeArea:schemeArea, schemeCapValue:schemeCapValue
     };
   }
 
   function evaluate(product, s){
     var t = tierFor(product, s.lvr);
     if(!t) return { available:false, maxLvr:productMaxLvr(product) };
-    var lmiRate = s.scheme ? 0 : lmiPct(s.lvr, s.baseLoan);
+    var lmiRate = (s.schemeBasic && product.schemeParticipant===true) ? 0 : lmiPct(s.lvr, s.baseLoan);
     var lmi = s.baseLoan * lmiRate/100;
     var loan = s.baseLoan + (s.capLmi ? lmi : 0);
     var t80 = tierFor(product, 80);
