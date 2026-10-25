@@ -22,7 +22,7 @@
           note: c>0 ? "First home concession of " + fmtMoney(c) + " applied on top of the home concession, from the published Queensland Revenue Office table."
                     : "Above $800,000 the Queensland first home concession is nil, so only the home concession applies." };
       },
-      note:"The owner-occupier home concession is applied automatically — it assumes you move in within a year and live there for a year. Queensland also has a separate first home (new home) concession for newly built homes that is not modelled here."
+      note:"The owner-occupier home concession is applied automatically — it assumes you move in within a year and live there for a year. Queensland also has a separate first home (new home) concession for newly built homes that is not modelled here. For contracts from 1 August 2026, home concessions generally require Australian citizenship, permanent residency or specified foreign retiree status; if not eligible, this estimate understates duty and additional foreign acquirer duty may apply."
     },
     NSW:{
       label:"New South Wales", concessionName:null,
@@ -135,8 +135,8 @@
         return v*0.0595;
       },
       fhb:function(v, base){
-        return { duty:base, exact:false, note:"The Northern Territory offers a first home concession on properties to $650,000, but its structure is not published in a form this tool can reproduce, so no reduction is applied. Treat the figure shown as an upper bound and check with the Territory Revenue Office." };
+        return { duty:base, exact:false, note:"No current general first-home duty concession for established homes has been verified. A separate stamp-duty exemption may apply to eligible new house-and-land packages purchased from a registered building practitioner; that property-type-specific exemption is not modelled. Check with the Territory Revenue Office." };
       },
-      note:"Below $525,000 the Territory uses a quadratic formula rather than a bracket table; above it, a flat percentage of the whole value."
+      note:"Below $525,000 the Territory uses a quadratic formula rather than a bracket table; above it, a flat percentage of the whole value. Eligible new house-and-land packages may be exempt; the property type is not captured by this calculator."
     }
   };
