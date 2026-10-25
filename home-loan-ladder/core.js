@@ -149,7 +149,7 @@
   function evaluate(product, s){
     var t = tierFor(product, s.lvr);
     if(!t) return { available:false, maxLvr:productMaxLvr(product) };
-    var lmiRate = (s.schemeBasic && product.schemeParticipant===true) ? 0 : lmiPct(s.lvr, s.baseLoan);
+    var lmiRate = (s.scheme && product.schemeLender===selectedLender) ? 0 : lmiPct(s.lvr, s.baseLoan);
     var lmi = s.baseLoan * lmiRate/100;
     var loan = s.baseLoan + (s.capLmi ? lmi : 0);
     var t80 = tierFor(product, 80);
