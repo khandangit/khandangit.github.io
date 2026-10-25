@@ -40,13 +40,13 @@
       lowDeposit:"ING announced a 0.25 percentage-point rise for new and existing variable loans effective 9 October 2026. Mortgage Simplifier rates here apply that announced increase to the previously published LVR tiers (6.34% at 80%, 6.49% at 90%, 6.94% at 95%); comparison rates await a readable updated ING rate table. ING is not a participating 5% Deposit Scheme lender."
     },
     {
-      id:"me", name:"ME Bank", asOf:"11 Sep 2026",
+      id:"me", name:"ME Bank", asOf:"3 Oct 2026 (announced +0.25pp)",
       products:[
         { id:"econome", name:"EconoME Home Loan", annualFee:0, upfrontFee:150,
           blurb:"No annual fee, unlimited additional repayments on variable loans, redraw of extra repayments, and a $150 settlement fee. Advertised P&I rates below are for total borrowings of $150,000 or more.",
-          tiers:[{max:60,rate:5.99,comp:6.01},{max:70,rate:5.99,comp:6.01},{max:80,rate:6.04,comp:6.06},{max:90,rate:6.34,comp:6.36},{max:95,rate:7.04,comp:7.06}] }
+          tiers:[{max:60,rate:6.24,comp:6.26},{max:70,rate:6.24,comp:6.26},{max:80,rate:6.29,comp:6.31},{max:90,rate:6.59,comp:6.61},{max:95,rate:7.29,comp:7.31}] }
       ],
-      lowDeposit:"EconoME publishes a 30 bp step from 6.04% at 80% LVR to 6.34% at 90%, then a larger 70 bp step to 7.04% in the 90.01–95% band. The product page states a maximum LVR of up to 95%. Rates are for new owner-occupier principal-and-interest lending and remain subject to ME's credit approval and valuation."
+      lowDeposit:"EconoME publishes a 30 bp step from 6.29% at 80% LVR to 6.59% at 90%, then a larger 70 bp step to 7.29% in the 90.01–95% band. ME announced a 0.25 percentage-point increase effective 3 October 2026; these tiers apply the announced increase to its prior published rate card. The product page states a maximum LVR of up to 95%. Rates are for new owner-occupier principal-and-interest lending and remain subject to ME's credit approval and valuation."
     },
     {
       id:"cba", name:"CommBank", asOf:"9 Oct 2026 (Digi/Simple; other products older)",
