@@ -21,7 +21,7 @@
   $('cash').addEventListener('input', syncPctFromCash);
   $('cashPct').addEventListener('input', syncCashFromPct);
   $('price').addEventListener('input', syncPctFromCash);
-  $('product').addEventListener('change', function(){ selectedProduct = this.value; render(); });
+  $('product').addEventListener('change', function(){ $('scheme').checked=false; selectedProduct = this.value; render(); });
 
   $('cashSeg').addEventListener('click', function(e){
     var b = e.target.closest('button'); if(!b) return;
