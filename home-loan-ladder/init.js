@@ -16,7 +16,7 @@
 
   ['price','term','inc1','inc2','incOther','expenses','deps','otherDebt','cardLimit','buffer','floorRate','otherCosts']
     .forEach(function(id){ $(id).addEventListener('input', render); });
-  ['freq','state'].forEach(function(id){ $(id).addEventListener('change', render); });
+  ['freq','state','schemeArea'].forEach(function(id){ $(id).addEventListener('change', render); });
   ['capLmi','scheme','fhb'].forEach(function(id){ $(id).addEventListener('change', render); });
   $('cash').addEventListener('input', syncPctFromCash);
   $('cashPct').addEventListener('input', syncCashFromPct);
