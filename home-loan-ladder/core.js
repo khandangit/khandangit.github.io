@@ -102,7 +102,7 @@
     var tentativeDeposit = Math.max(0, Math.min(price,
       cashMode==='deposit' ? cash : cash-duty.duty-otherCosts));
     var schemeBasic = schemeRequested && isFhb &&
-      price<=schemeCapValue && tentativeDeposit>=price*0.05;
+      price<=schemeCapValue && tentativeDeposit>=price*0.05 && num('term')<=30;
     var scheme = schemeBasic && schemeLenderParticipates(selectedLender);
 
     var deposit, savings;
