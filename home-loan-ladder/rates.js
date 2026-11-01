@@ -64,7 +64,7 @@
           blurb:"Fixed 2 years, then reverts to Standard Variable less the package discount. No offset while fixed.",
           tiers:[{max:95,rate:6.82,comp:8.38}] }
       ],
-      lowDeposit:"Digi stops at 80% LVR, so the published Simple Home Loan is a low-deposit alternative: 6.74% at 80%, 7.04% at 90%, and 7.99% at 95%. CommBank participates in the 5% Deposit Scheme; product eligibility and borrower approval must be confirmed. Standard Variable and fixed package rates are verified against CommBank\u0027s official rate card effective 9 October 2026."
+      lowDeposit:"Digi stops at 80% LVR, so the published Simple Home Loan is a low-deposit alternative: 6.74% at 80%, 7.04% at 90%, and 7.99% at 95%. CommBank participates in the 5% Deposit Scheme; product eligibility and borrower approval must be confirmed. Standard Variable and fixed package rates are verified against CommBank's official rate card effective 9 October 2026."
     },
     {
       id:"anz", name:"ANZ", asOf:"9 Oct 2026 (index rise; tier discounts carried forward)",
