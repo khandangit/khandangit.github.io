@@ -49,7 +49,7 @@
       lowDeposit:"EconoME publishes a 30 bp step from 6.29% at 80% LVR to 6.59% at 90%, then a larger 70 bp step to 7.29% in the 90.01–95% band. ME announced a 0.25 percentage-point increase effective 3 October 2026; these tiers apply the announced increase to its prior published rate card. The product page states a maximum LVR of up to 95%. Rates are for new owner-occupier principal-and-interest lending and remain subject to ME's credit approval and valuation."
     },
     {
-      id:"cba", name:"CommBank", asOf:"9 Oct 2026 (Digi/Simple; other products older)",
+      id:"cba", name:"CommBank", asOf:"9 Oct 2026 (official rate card)",
       products:[
         { schemeLender:"cba", id:"digi", name:"Digi Home Loan", annualFee:0, upfrontFee:300,
           blurb:"Online only (no brokers), capped at 80% LVR. $300 establishment fee; no loan service fee or offset feature fee.",
@@ -59,12 +59,12 @@
           tiers:[{max:60,rate:6.59,comp:6.73},{max:70,rate:6.64,comp:6.78},{max:80,rate:6.74,comp:6.88},{max:90,rate:7.04,comp:7.18},{max:95,rate:7.99,comp:8.13}] },
         { schemeLender:"cba", id:"svr", name:"Standard Variable + Wealth Package", annualFee:395, upfrontFee:0,
           blurb:"0.70% p.a. package discount already applied. Multiple offsets, splits, top-ups. $395 annual package fee.",
-          tiers:[{max:60,rate:6.34,comp:6.72},{max:70,rate:6.39,comp:6.77},{max:80,rate:6.49,comp:6.87},{max:90,rate:6.79,comp:7.16},{max:95,rate:7.74,comp:8.10}] },
+          tiers:[{max:60,rate:6.59,comp:6.97},{max:70,rate:6.64,comp:7.01},{max:80,rate:6.74,comp:7.11},{max:90,rate:7.04,comp:7.41},{max:95,rate:7.99,comp:8.35}] },
         { schemeLender:"cba", id:"fix2", name:"2-year Fixed + Wealth Package", annualFee:395, upfrontFee:0, fixed:true,
           blurb:"Fixed 2 years, then reverts to Standard Variable less the package discount. No offset while fixed.",
-          tiers:[{max:95,rate:6.34,comp:8.09}] }
+          tiers:[{max:95,rate:6.82,comp:8.38}] }
       ],
-      lowDeposit:"Digi stops at 80% LVR, so the published Simple Home Loan is a low-deposit alternative: 6.74% at 80%, 7.04% at 90%, and 7.99% at 95%. CommBank participates in the 5% Deposit Scheme; product eligibility and borrower approval must be confirmed. Standard Variable package tiers in this tool have not been reverified for October."
+      lowDeposit:"Digi stops at 80% LVR, so the published Simple Home Loan is a low-deposit alternative: 6.74% at 80%, 7.04% at 90%, and 7.99% at 95%. CommBank participates in the 5% Deposit Scheme; product eligibility and borrower approval must be confirmed. Standard Variable and fixed package rates are verified against CommBank\u0027s official rate card effective 9 October 2026."
     },
     {
       id:"anz", name:"ANZ", asOf:"9 Oct 2026 (index rise; tier discounts carried forward)",
