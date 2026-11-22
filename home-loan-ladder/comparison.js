@@ -66,7 +66,7 @@
         + 'Where fees do decide things is <em>within</em> a lender: switch the product dropdown above between a no-frills loan and a packaged one to see the same bank priced both ways.</p>';
 
       html += '<p>Each lender is shown at its cheapest product available at this LVR. '
-        + 'Rows marked <code>FIXED RATE</code> are not like-for-like — the rate holds only for the fixed term, and the full-term figure assumes it runs the distance, which understates the real cost. '
+        + 'Fixed-rate products are excluded from these rankings because their reversion rates are not modelled. '
         + 'Rows marked <code>INDICATIVE</code> are negotiated pricing shown at the ceiling of a published range.</p>';
       note.innerHTML = html;
     } else {
