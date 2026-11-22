@@ -212,6 +212,7 @@
     var total = s.deposit + s.duty.duty + s.otherCosts + (ev.available ? ev.upfrontFee : 0)
               + ((s.lvr>80 && !s.scheme && !s.capLmi && ev.available) ? ev.lmi : 0);
     row('Cash required at settlement', money(total), 'total');
+    if(cashMode==='savings' && total > s.cash + 0.5) row('SHORTFALL — extra cash needed for lender fees', money(total-s.cash), 'total');
 
     var note = $('dutyNote');
     var bits = [];
