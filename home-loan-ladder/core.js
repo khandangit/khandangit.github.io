@@ -171,6 +171,7 @@
   function cheapestProduct(lender, s, key){
     var best=null, bestEv=null;
     for(var i=0;i<lender.products.length;i++){
+      if(lender.products[i].fixed) continue; // Default lender rankings compare variable loans only.
       var e = evaluate(lender.products[i], s);
       if(!e.available) continue;
       var metric = key==='rate' ? e.rate : e[key];
